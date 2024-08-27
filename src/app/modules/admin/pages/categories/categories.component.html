@@ -1,3 +1,103 @@
-<section class="container">
+<nav
+  class="navbar navbar-expand-lg bg-dark border-bottom border-body"
+  data-bs-theme="dark"
+> <!--TODO Remove this navbar before doing the pull-request for the issue #4-->
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Dropdown link
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="container mt-3">
   <h1 class="display-6">Categorias</h1>
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-primary me-3">Importar</button>
+    <button type="button" class="btn btn-primary">Exportar</button>
+  </div>
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Produtos</th>
+        <th scope="col">Dept.</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bebidas</td>
+        <td>3</td>
+        <td>Cozinha</td>
+        <td>
+          <button type="button" class="btn btn-warning me-3">Desativar</button>
+          <button type="button" class="btn btn-danger">Remover</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Pratos</td>
+        <td>3</td>
+        <td>Cozinha</td>
+        <td>
+          <button type="button" class="btn btn-warning me-3">Desativar</button>
+          <button type="button" class="btn btn-danger">Remover</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Sobremesas</td>
+        <td>1</td>
+        <td>Cozinha</td>
+        <td>
+          <button type="button" class="btn btn-warning me-3">Desativar</button>
+          <button type="button" class="btn btn-danger">Remover</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="button" class="btn btn-secondary">Adicionar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="button" class="btn btn-success me-3">Salvar</button>
+  <button type="button" class="btn btn-secondary">Voltar</button>
 </section>
