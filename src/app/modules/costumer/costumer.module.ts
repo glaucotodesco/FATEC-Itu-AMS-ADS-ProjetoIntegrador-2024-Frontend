@@ -12,6 +12,10 @@ import { MenuComponent } from './pages/menu/menu.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    HomeComponent,
+    MenuComponent
   ]
 })
 export class CostumerModule { }
