@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent {
+  inputing : boolean = false;
 
+  pressInput(){
+    this.inputing = !this.inputing;
+  }
 }
