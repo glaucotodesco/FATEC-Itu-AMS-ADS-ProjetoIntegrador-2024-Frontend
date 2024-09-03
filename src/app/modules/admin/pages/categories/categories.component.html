@@ -1,14 +1,31 @@
 <section class="container mt-3">
   <h1 class="display-6">Categorias</h1>
   <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-primary me-3">Novo</button>
     <button type="button" class="btn btn-primary me-3">Importar</button>
-    <button type="button" class="btn btn-primary">Exportar</button>
   </div>
-  <table class="table table-borderless">
-    <thead>
+
+  <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+    <ul class="pagination pagination-sm">
+      <li class="page-item">
+        <a class="page-link" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link">1</a></li>
+      <li class="page-item">
+        <a class="page-link"   aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <table class="table table-borderless table-striped mt-3">
+    <thead class="table-secondary">
       <tr>
-        <th scope="col">Nome</th>
-        <th scope="col" class="text-center">Produtos</th>
+        <th scope="col" width="25%">Nome</th>
+        <th scope="col" class="text-center" width="20%">Produtos</th>
         <th scope="col">Dept.</th>
         <th scope="col">Disponível</th>
         <th scope="col"></th>
@@ -56,7 +73,7 @@
       </tr>
       <tr *ngIf="!inputing">
         <td>
-          <button type="button" class="btn btn-secondary" (click)="pressInput()">Adicionar</button>
+          <button type="button" class="btn btn-primary" (click)="pressInput()">Novo</button>
         </td>
       </tr>
       <tr *ngIf="inputing">
@@ -65,13 +82,29 @@
         </td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" (click)="pressInput()" class="btn btn-success">Add.</button>
-            <button type="button" (click)="pressInput()" class="btn btn-danger">Cancel.</button>
+            <button type="button" (click)="pressInput()" class="btn btn-success">Adicionar</button>
+            <button type="button" (click)="pressInput()" class="btn btn-danger">Cancelar</button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+    <ul class="pagination pagination-sm">
+      <li class="page-item">
+        <a class="page-link" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link">1</a></li>
+      <li class="page-item">
+        <a class="page-link"   aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
   <button type="button" class="btn btn-success me-3">Salvar</button>
   <button type="button" class="btn btn-secondary">Voltar</button>
