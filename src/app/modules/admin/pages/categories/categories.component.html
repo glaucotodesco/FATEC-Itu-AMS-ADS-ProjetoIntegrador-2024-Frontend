@@ -1,31 +1,14 @@
 <section class="container mt-3">
   <h1 class="display-6">Categorias</h1>
   <div class="d-flex justify-content-end">
-    <button type="button" class="btn btn-primary me-3">Novo</button>
     <button type="button" class="btn btn-primary me-3">Importar</button>
   </div>
-
-  <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-    <ul class="pagination pagination-sm">
-      <li class="page-item">
-        <a class="page-link" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link">1</a></li>
-      <li class="page-item">
-        <a class="page-link"   aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
 
   <table class="table table-borderless table-striped mt-3">
     <thead class="table-secondary">
       <tr>
         <th scope="col" width="25%">Nome</th>
-        <th scope="col" class="text-center" width="20%">Produtos</th>
+        <th scope="col" class="text-center" width="10%">Produtos</th>
         <th scope="col">Dept.</th>
         <th scope="col">Disponível</th>
         <th scope="col"></th>
@@ -42,7 +25,12 @@
           </div>
         </td>
         <td>
-          <button type="button" class="btn btn-danger">Remover</button>
+          <button type="button" class="btn btn-secondary me-2">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <button type="button" class="btn btn-danger">
+            <i class="bi bi-trash-fill"></i>
+          </button>
         </td>
       </tr>
       <tr>
@@ -55,7 +43,12 @@
           </div>
         </td>
         <td>
-          <button type="button" class="btn btn-danger">Remover</button>
+          <button type="button" class="btn btn-secondary me-2">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <button type="button" class="btn btn-danger">
+            <i class="bi bi-trash-fill"></i>
+          </button>
         </td>
       </tr>
       <tr>
@@ -68,12 +61,19 @@
           </div>
         </td>
         <td>
-          <button type="button" class="btn btn-danger">Remover</button>
+          <button type="button" class="btn btn-secondary me-2">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <button type="button" class="btn btn-danger">
+            <i class="bi bi-trash-fill"></i>
+          </button>
         </td>
       </tr>
       <tr *ngIf="!inputing">
         <td>
-          <button type="button" class="btn btn-primary" (click)="pressInput()">Novo</button>
+          <button type="button" class="btn btn-primary" (click)="pressInput()">
+            <i class="bi bi-plus-lg"></i>
+          </button>
         </td>
       </tr>
       <tr *ngIf="inputing">
@@ -82,8 +82,12 @@
         </td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" (click)="pressInput()" class="btn btn-success">Adicionar</button>
-            <button type="button" (click)="pressInput()" class="btn btn-danger">Cancelar</button>
+            <button type="button" (click)="pressInput()" class="btn btn-success">
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button type="button" (click)="pressInput()" class="btn btn-danger">
+              <i class="bi bi-x-lg"></i>
+            </button>
           </div>
         </td>
       </tr>
