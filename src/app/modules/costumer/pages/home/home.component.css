@@ -1,0 +1,8 @@
+.btn-success{
+background-color: #d9d9d9;
+color: black;
+border: #d9d9d9;
+}
+.btn-outline-primary:hover{
+  background-color: #c17b00;
+  }
