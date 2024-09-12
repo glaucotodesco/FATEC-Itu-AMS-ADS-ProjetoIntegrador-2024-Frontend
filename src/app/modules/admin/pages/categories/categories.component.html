@@ -69,26 +69,11 @@
           </button>
         </td>
       </tr>
-      <tr *ngIf="!inputing">
+      <tr>
         <td>
-          <button type="button" class="btn btn-primary" (click)="pressInput()">
+          <button type="button" class="btn btn-primary">
             <i class="bi bi-plus-lg"></i>
           </button>
-        </td>
-      </tr>
-      <tr *ngIf="inputing">
-        <td>
-          <input type="text" class="form-control" placeholder="Digite o nome da categoria">
-        </td>
-        <td>
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" (click)="pressInput()" class="btn btn-success">
-              <i class="bi bi-check-lg"></i>
-            </button>
-            <button type="button" (click)="pressInput()" class="btn btn-danger">
-              <i class="bi bi-x-lg"></i>
-            </button>
-          </div>
         </td>
       </tr>
     </tbody>
@@ -113,3 +98,9 @@
   <button type="button" class="btn btn-success me-3">Salvar</button>
   <button type="button" class="btn btn-secondary">Voltar</button>
 </section>
+
+<app-modal #modalForm [title]="'Teste'">
+  <ng-content>
+    Teste
+  </ng-content>
+</app-modal>

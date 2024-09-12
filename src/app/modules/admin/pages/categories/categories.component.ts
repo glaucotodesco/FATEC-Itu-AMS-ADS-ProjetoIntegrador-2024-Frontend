@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalComponent } from '../../../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-categories',
@@ -6,9 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent {
-  inputing : boolean = false;
-
-  pressInput(){
-    this.inputing = !this.inputing;
+  categoryForm(modalForm: ModalComponent){
+    modalForm.open();
   }
 }
