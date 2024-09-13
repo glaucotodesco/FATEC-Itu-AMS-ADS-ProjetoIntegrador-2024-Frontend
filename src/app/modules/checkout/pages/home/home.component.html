@@ -24,7 +24,7 @@
       </table>
     </div>
     <div class="col-md-6 border p-3">
-      <h2>Registro de Pedido</h2>
+      <h2 class="display-6">Registro</h2>
       <form>
         <div class="form-row">
           <div class="form-group col-md-3">
@@ -40,7 +40,8 @@
           </div>
           <div class="form-group col-md-3">
             <label for="categoria">Categoria</label>
-            <select class="form-control" id="categoria">
+            <select class="form-control" id="categoria" (change)="onCategoriaChange($event)">
+              <option value="">Selecione</option>
               <option value="pratoPrincipal">Prato Principal</option>
               <option value="sobremesa">Sobremesa</option>
               <option value="bebida">Bebida</option>
@@ -52,20 +53,37 @@
             <div class="card-body">
               <h5 class="card-title"></h5>
               <p class="card-text"></p>
-              <div class="mb-3">
-                <label for="exampleFormControl" class="form-label">Observações</label>
-                <textarea class="form-control" id="exampleFormControl" rows="1"></textarea>
-                <div class="form-group col-md-2">
-                  <button class="btn btn-primary" id="adicionar">+</button>
-                </div>
+
+
+              <div *ngIf="selectedCategory === 'pratoPrincipal'">
+                <ul>
+                  <li>Prato 1 <button class="btn btn-success btn-sm" (click)="addItem('Prato 1')">+</button></li>
+                  <li>Prato 2 <button class="btn btn-success btn-sm" (click)="addItem('Prato 2')">+</button></li>
+                </ul>
+              </div>
+              <div *ngIf="selectedCategory === 'sobremesa'">
+                <ul>
+                  <li>Sobremesa 1 <button class="btn btn-success btn-sm" (click)="addItem('Sobremesa 1')">+</button></li>
+                  <li>Sobremesa 2 <button class="btn btn-success btn-sm" (click)="addItem('Sobremesa 2')">+</button></li>
+                </ul>
+              </div>
+              <div *ngIf="selectedCategory === 'bebida'">
+                <ul>
+                  <li>Bebida 1 <button class="btn btn-success btn-sm" (click)="addItem('Bebida 1')">+</button></li>
+                  <li>Bebida 2 <button class="btn btn-success btn-sm" (click)="addItem('Bebida 2')">+</button></li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
+        <div class="mb-3">
+                <label for="exampleFormControl" class="form-label">Itens</label>
+                <textarea class="form-control" id="exampleFormControl" rows="1"></textarea>
+                </div>
         <div class="d-flex justify-content-between">
-            <button class="btn btn-info">Fazer Pedido no Balcão</button>
-            <button class="btn btn-warning">Fazer Checkout</button>
-          </div>
+          <button class="btn btn-info">Fazer Pedido no Balcão</button>
+          <button class="btn btn-warning">Fazer Checkout</button>
+        </div>
       </form>
     </div>
   </div>
