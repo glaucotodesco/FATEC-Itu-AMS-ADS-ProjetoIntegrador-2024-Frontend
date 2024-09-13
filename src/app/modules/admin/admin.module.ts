@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminRoutingModule } from './admin-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 
@@ -13,11 +13,11 @@ import { RouterModule } from '@angular/router';
     HomeComponent
   ],
   imports: [
+    SharedModule,
     CommonModule,
     NgbModule,
     RouterModule,
-    AdminRoutingModule,
-    SharedModule
+    AdminRoutingModule
 ],
   exports:[]
 })

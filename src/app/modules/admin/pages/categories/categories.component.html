@@ -71,7 +71,7 @@
       </tr>
       <tr>
         <td>
-          <button type="button" class="btn btn-primary">
+          <button type="button" class="btn btn-primary" (click)="categoryForm(modalForm)">
             <i class="bi bi-plus-lg"></i>
           </button>
         </td>
@@ -100,7 +100,6 @@
 </section>
 
 <app-modal #modalForm [title]="'Teste'">
-  <ng-content>
-    Teste
-  </ng-content>
+  <p>Teste</p>
 </app-modal>
+
