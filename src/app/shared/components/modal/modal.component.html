@@ -4,10 +4,10 @@
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.close()"></button>
 	</div>
 	<div class="modal-body">
-		<ng-component></ng-component>
+		<ng-content></ng-content>
 	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Voltar</button>
-    <button type="button" class="btn btn-outline-success" (click)="modal.close()">Ok</button>
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">Ok</button>
 	</div>
 </ng-template>

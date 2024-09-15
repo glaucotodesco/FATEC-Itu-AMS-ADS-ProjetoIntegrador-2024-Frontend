@@ -7,9 +7,9 @@
   <table class="table table-borderless table-striped mt-3">
     <thead class="table-secondary">
       <tr>
-        <th scope="col" width="25%">Nome</th>
-        <th scope="col" class="text-center" width="10%">Produtos</th>
-        <th scope="col">Dept.</th>
+        <th scope="col">Nome</th>
+        <th scope="col" class="text-center">Produtos</th>
+        <th scope="col">Praça</th>
         <th scope="col">Disponível</th>
         <th scope="col"></th>
       </tr>
@@ -25,10 +25,10 @@
           </div>
         </td>
         <td>
-          <button type="button" class="btn btn-secondary me-2">
+          <button type="button" class="btn btn-secondary me-2" (click)="openModal(modalForm)">
             <i class="bi bi-pencil-square"></i>
           </button>
-          <button type="button" class="btn btn-danger">
+          <button type="button" class="btn btn-danger" (click)="openModal(modalDelete)">
             <i class="bi bi-trash-fill"></i>
           </button>
         </td>
@@ -43,10 +43,10 @@
           </div>
         </td>
         <td>
-          <button type="button" class="btn btn-secondary me-2">
+          <button type="button" class="btn btn-secondary me-2" (click)="openModal(modalForm)">
             <i class="bi bi-pencil-square"></i>
           </button>
-          <button type="button" class="btn btn-danger">
+          <button type="button" class="btn btn-danger" (click)="openModal(modalDelete)">
             <i class="bi bi-trash-fill"></i>
           </button>
         </td>
@@ -61,17 +61,17 @@
           </div>
         </td>
         <td>
-          <button type="button" class="btn btn-secondary me-2">
+          <button type="button" class="btn btn-secondary me-2" (click)="openModal(modalForm)">
             <i class="bi bi-pencil-square"></i>
           </button>
-          <button type="button" class="btn btn-danger">
+          <button type="button" class="btn btn-danger" (click)="openModal(modalDelete)">
             <i class="bi bi-trash-fill"></i>
           </button>
         </td>
       </tr>
       <tr>
         <td>
-          <button type="button" class="btn btn-primary" (click)="categoryForm(modalForm)">
+          <button type="button" class="btn btn-primary" (click)="openModal(modalForm)">
             <i class="bi bi-plus-lg"></i>
           </button>
         </td>
@@ -99,7 +99,20 @@
   <button type="button" class="btn btn-secondary">Voltar</button>
 </section>
 
-<app-modal #modalForm [title]="'Teste'">
-  <p>Teste</p>
+<app-modal #modalForm [title]="'Criar categoria'">
+  <div class="mb-3">
+    <label for="nameInput" class="form-label">Nome</label>
+    <input type="text" class="form-control" id="nameInput">
+  </div>
+  <label class="form-label" for="squareInput">Praça</label>
+  <select class="form-select" id="squareInput" aria-label="Default select example">
+    <option selected>Selecione uma Praça</option>
+    <option value="1">Cozinha</option>
+    <option value="2">Bar</option>
+  </select>
+</app-modal>
+
+<app-modal #modalDelete [title]="'Deletar Categoria'">
+  <p>Tem certeza que deseja deletar uma categoria</p>
 </app-modal>
 

@@ -7,7 +7,7 @@ import { ModalComponent } from '../../../../shared/components/modal/modal.compon
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent {
-  categoryForm(modalForm: ModalComponent){
+  openModal(modalForm: ModalComponent){
     modalForm.open();
   }
 }
