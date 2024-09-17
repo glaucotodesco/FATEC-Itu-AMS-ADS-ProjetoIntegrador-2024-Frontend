@@ -7,6 +7,7 @@ import { ComponentTwoComponent } from './components/component-two/component-two.
 import { ComponentThreeComponent } from './components/component-three/component-three.component';
 import { ComponentFourComponent } from './components/component-four/component-four.component';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -21,6 +22,7 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     AdminRoutingModule,
+    RouterModule, 
     NgbAccordionModule
   ]
 })
