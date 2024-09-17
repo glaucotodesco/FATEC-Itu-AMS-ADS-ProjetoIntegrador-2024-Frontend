@@ -4,6 +4,8 @@ import { OpenRegisterComponent } from './pages/open-register/open-register.compo
 import { HomeComponent } from './pages/home/home.component';
 import { OrdersSlipComponent } from './components/orders-slip/orders-slip.component';
 import { CheckoutRoutingModule } from './checkout-routing.module';
+import { SharedModule } from '../../shared/shared.module';
+import { OrderRegisterComponent } from './components/order-register/order-register.component';
 
 
 
@@ -11,11 +13,13 @@ import { CheckoutRoutingModule } from './checkout-routing.module';
   declarations: [
     OpenRegisterComponent,
     HomeComponent,
-    OrdersSlipComponent
+    OrdersSlipComponent,
+    OrderRegisterComponent
   ],
   imports: [
     CommonModule,
-    CheckoutRoutingModule
+    CheckoutRoutingModule,
+    SharedModule
   ]
 })
 export class CheckoutModule { }

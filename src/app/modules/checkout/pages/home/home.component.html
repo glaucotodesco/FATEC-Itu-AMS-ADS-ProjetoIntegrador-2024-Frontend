@@ -1,90 +1,67 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6 border p-3">
-      <h2 class="display-6">Pedidos</h2>
+  <div class="row justify-content-center">
+    <!-- Comandas em Aberto -->
+    <div class="col-md-6 border p-3 mb-3">
+      <h2 class="display-6">Comandas em Aberto</h2>
       <table class="table table-striped table-borderless">
         <thead class="table-secondary">
           <tr>
-            <th>Pedido ID</th>
-            <th>Tipo de Pedido</th>
-            <th>Nome do Cliente</th>
+            <th>Comanda</th>
+            <th>Total</th>
+            <th>Horário</th>
+            <th>Tipo</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let pedido of pedidos">
-            <td>{{ pedido.id }}</td>
-            <td>{{ pedido.tipoPedido }}</td>
-            <td>{{ pedido.nomeCliente }}</td>
+          <tr>
+            <td>123</td>
+            <td>R$ 25,00</td>
+            <td>19:00</td>
+            <td>Balcão</td>
             <td>
-              <button class="btn btn-secondary"><i class="bi bi-highlighter"></i></button>
+              <button class="btn btn-secondary" (click)="openModal(modalOrder)">
+                <i class="bi bi-highlighter"></i>
+              </button>
+              <button class="btn btn-warning">Checkout</button>
             </td>
           </tr>
+          <!-- Adicione mais linhas conforme necessário -->
         </tbody>
       </table>
     </div>
-    <div class="col-md-6 border p-3">
-      <h2 class="display-6">Registro</h2>
-      <form>
-        <div class="form-row">
-          <div class="form-group col-md-3">
-            <label for="tipoPedido">Tipo de Pedido</label>
-            <select class="form-control" id="tipoPedido">
-              <option value="balcao">Balcão</option>
-              <option value="mesa">Mesa</option>
-            </select>
-          </div>
-          <div class="form-group col-md-3">
-            <label for="nomeCliente">Nome do Cliente</label>
-            <input type="text" class="form-control" id="nomeCliente">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="categoria">Categoria</label>
-            <select class="form-control" id="categoria" (change)="onCategoriaChange($event)">
-              <option value="">Selecione</option>
-              <option value="pratoPrincipal">Prato Principal</option>
-              <option value="sobremesa">Sobremesa</option>
-              <option value="bebida">Bebida</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text"></p>
+  </div>
 
-
-              <div *ngIf="selectedCategory === 'pratoPrincipal'">
-                <ul>
-                  <li>Prato 1 <button class="btn btn-success btn-sm" (click)="addItem('Prato 1')">+</button></li>
-                  <li>Prato 2 <button class="btn btn-success btn-sm" (click)="addItem('Prato 2')">+</button></li>
-                </ul>
-              </div>
-              <div *ngIf="selectedCategory === 'sobremesa'">
-                <ul>
-                  <li>Sobremesa 1 <button class="btn btn-success btn-sm" (click)="addItem('Sobremesa 1')">+</button></li>
-                  <li>Sobremesa 2 <button class="btn btn-success btn-sm" (click)="addItem('Sobremesa 2')">+</button></li>
-                </ul>
-              </div>
-              <div *ngIf="selectedCategory === 'bebida'">
-                <ul>
-                  <li>Bebida 1 <button class="btn btn-success btn-sm" (click)="addItem('Bebida 1')">+</button></li>
-                  <li>Bebida 2 <button class="btn btn-success btn-sm" (click)="addItem('Bebida 2')">+</button></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mb-3">
-                <label for="exampleFormControl" class="form-label">Itens</label>
-                <textarea class="form-control" id="exampleFormControl" rows="1"></textarea>
-                </div>
-        <div class="d-flex justify-content-between">
-          <button class="btn btn-info">Fazer Pedido no Balcão</button>
-          <button class="btn btn-warning">Fazer Checkout</button>
-        </div>
-      </form>
+  <div class="row justify-content-center">
+    <!-- Comandas Fechadas -->
+    <div class="col-md-6 border p-3 mb-3">
+      <h2 class="display-6">Comandas Fechadas</h2>
+      <table class="table table-striped table-borderless">
+        <thead class="table-secondary">
+          <tr>
+            <th>Comanda</th>
+            <th>Total</th>
+            <th>Fechamento</th>
+            <th>Tipo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>124</td>
+            <td>R$ 30,00</td>
+            <td>18:30</td>
+            <td>Balcão</td>
+            <td></td>
+          </tr>
+          <!-- Adicione mais linhas conforme necessário -->
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
+
+    <app-modal #modalOrder [title]="'Editar Registro'">
+      <app-order-register></app-order-register>
+    </app-modal>
+

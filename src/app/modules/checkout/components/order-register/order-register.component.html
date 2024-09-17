@@ -1,0 +1,49 @@
+<!-- Registro -->
+<div class="col-md-12 border p-3 mb-12">
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="comanda">Comanda</label>
+        <input type="text" class="form-control" id="comanda">
+      </div>
+      <div class="form-group col-md-12">
+        <label for="tipoPedido">Tipo de Pedido</label>
+        <select class="form-control" id="tipoPedido">
+          <option value="balcao">Balcão</option>
+          <option value="balcao">Mesa</option>
+        </select>
+      </div>
+      <div class="form-group col-md-12">
+        <label for="categoria">Categoria</label>
+        <select class="form-control" id="categoria" (change)="onCategoriaChange($event)">
+          <option value="">Selecione</option>
+          <option value="pratoPrincipal">Prato Principal</option>
+          <option value="sobremesa">Sobremesa</option>
+          <option value="bebida">Bebida</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text"></p>
+
+          <div class="mb-3">
+            <label for="exampleFormControl" class="form-label">Itens</label>
+            <textarea class="form-control" id="exampleFormControl" rows="5" readonly>
+          Item 1: R$ 10,00
+          Item 2: R$ 5,00
+          Item 3: R$ 15,00
+          Item 4: R$ 10,00
+          Item 5: R$ 5,00
+            </textarea>
+          </div>
+          <div class="summary">
+            <h5>Total da Comanda: R$ <span id="total-comanda">45,00</span></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
