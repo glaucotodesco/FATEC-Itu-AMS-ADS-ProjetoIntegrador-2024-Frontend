@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class="p-5" style="height: 730px;">
+    <!-- primeiro componente-->
+    <div class="col row gap-2 p-1 ">
+        <div class="col p-1 component rounded">
+            <app-component-one [num]="1"></app-component-one>
+        </div>
+        <div class="col p-1 component rounded">
+            <app-component-one [num]="2"></app-component-one>
+        </div>
+        <div class="col p-1 component rounded">
+            <app-component-one [num]="3"></app-component-one>
+        </div>
+        <div class="col col-xl-2 p-1 component rounded">
+            <app-component-one [num]="4"></app-component-one>
+        </div>
+
+
+
+
+    </div>
+    <hr>
+    <!-- segundo e terceiro componente-->
+    <div class="d-flex row gap-lg-3 col p-1 text-center">
+        <div class="d-flex flex-column  col-sm-6 col-lg gap-3 p-lg-1">
+            <div class="col">
+                <app-component-two [num]="1"></app-component-two>
+            </div>
+            <div class="col">
+                <app-component-two [num]="2"></app-component-two>
+            </div>
+        </div>
+        <div class="d-flex flex-column mt-3 mt-sm-0 col-sm-6 col-lg gap-3 p-lg-1">
+            <div class="col">
+                <app-component-two [num]="3"></app-component-two>
+            </div>
+            <div class="col">
+                <app-component-two [num]="4"></app-component-two>
+            </div>
+        </div>
+  
+
+        <div class="component col mt-3 mt-lg-0 m-2  m-lg-1  rounded ">
+            <app-component-three></app-component-three>
+        </div>
+
+
+
+
+    </div>
+    <hr>
+
+    <!-- quarto componente-->
+    <div class=" ">
+        <app-component-four></app-component-four>
+
+    </div>
+    
+</body>
+
+</html>
