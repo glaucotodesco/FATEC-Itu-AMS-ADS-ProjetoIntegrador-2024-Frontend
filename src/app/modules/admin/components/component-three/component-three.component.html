@@ -7,10 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="p-1 " >
+    <div class="p-5" >
         <p>Vendas do cardápio</p>
-        <span>Categ.</span>
-        <span style="color: grey;"> Prod</span>
+        
         <hr>
 
     </div>
@@ -21,7 +20,7 @@
             <button ngbAccordionButton style="background-color: #d9d9d9;">{{ item.class  }} - {{item.percentange}}%</button>
           </h2>
           <div ngbAccordionCollapse>
-            <div ngbAccordionBody class="overflow-auto"  style="height: 150px;">
+            <div ngbAccordionBody class="overflow-auto"  style="height: 125px;">
               <ng-template>
                 <div *ngFor="let product of item.products">
                   <p>{{product.name}} - R$ {{product.price}} - Porcentagem: {{product.percentage}}%</p>
