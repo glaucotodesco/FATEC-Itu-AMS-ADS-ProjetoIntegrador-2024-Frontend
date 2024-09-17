@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6uzB26X3X3q3ZDwuzTD7XHb87d5q64V7t7t77b/13i4B07j2d347196f0A8Qv" crossorigin="anonymous">
+  <style>
+    .comanda-title {
+      font-size: 1.25rem; /* Tamanho da fonte reduzido */
+      font-weight: bold;
+    }
+    .table th, .table td {
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .btn-custom {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="mb-4">Checkout</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Comanda 1 -->
+        <div class="mb-4">
+          <h2 class="comanda-title">Comanda 1</h2>
+          <div class="form-group">
+            <label for="comanda1">Número da Comanda:</label>
+            <input type="number" class="form-control" id="comanda1" name="comanda1" value="1" readonly>
+          </div>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Qtd</th>
+                <th>V. Uni</th>
+                <th>Adic.</th>
+                <th>Valor</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Parmegiana</td>
+                <td><input type="number" class="form-control" value="1"></td>
+                <td>R$5</td>
+                <td>R$1</td>
+                <td>R$6</td>
+                <td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+              </tr>
+              <tr>
+                <td>Coca-cola</td>
+                <td><input type="number" class="form-control" value="2"></td>
+                <td>R$1</td>
+                <td>R$1</td>
+                <td>R$2</td>
+                <td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4" class="text-end">Subtotal</td>
+                <td>R$8</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- Comanda 2 -->
+        <div class="mb-4">
+          <h2 class="comanda-title">Comanda 2</h2>
+          <div class="form-group">
+            <label for="comanda2">Número da Comanda:</label>
+            <input type="number" class="form-control" id="comanda2" name="comanda2" value="2" readonly>
+          </div>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Qtd</th>
+                <th>V. Uni</th>
+                <th>Adic.</th>
+                <th>Valor</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Espaguete</td>
+                <td><input type="number" class="form-control" value="1"></td>
+                <td>R$7</td>
+                <td>R$1.5</td>
+                <td>R$8.5</td>
+                <td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+              </tr>
+              <tr>
+                <td>Guaraná</td>
+                <td><input type="number" class="form-control" value="1"></td>
+                <td>R$2</td>
+                <td>R$0.5</td>
+                <td>R$2.5</td>
+                <td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4" class="text-end">Subtotal</td>
+                <td>R$11</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <!-- Adicionar Comanda -->
+        <div class="form-group mb-4">
+          <label for="add-comanda">Adicionar Comanda:</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="add-comanda" name="add-comanda" placeholder="Número da nova comanda">
+            <button class="btn btn-success" type="button">Adicionar</button>
+          </div>
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="payment">Forma de Pagamento:</label>
+          <select class="form-select" id="payment" name="payment">
+            <option value="credit">Crédito</option>
+            <option value="debit">Débito</option>
+            <option value="pix">PIX</option>
+            <option value="dinheiro">Dinheiro</option>
+          </select>
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="amount">Valor Subtotal:</label>
+          <input type="text" class="form-control" id="amount" name="amount">
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="fixed-tip">Gorjeta (15%):</label>
+          <p id="fixed-tip">Valor da gorjeta: R$2.85</p>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="amount">Valor Total:</label>
+            <input type="text" class="form-control" id="amount" name="amount">
+          </div>
+
+        <button type="button" class="btn btn-primary btn-custom">Finalizar</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CheckoutModule } from './modules/checkout/checkout.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CheckoutModule,
     NgbModule
   ],
   providers: [],
