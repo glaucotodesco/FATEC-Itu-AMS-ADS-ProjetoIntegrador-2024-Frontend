@@ -1,1 +1,103 @@
-<p>open-register works!</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abertura de Caixa</title>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f0f2f5;
+      font-family: 'Arial', sans-serif;
+    }
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: white;
+    }
+    .card-header {
+      background-color: black;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    .btn-custom {
+      background-color: darkblue;
+      color: white;
+      border-radius: 50px;
+    }
+    .btn-custom:hover {
+      background-color: darkblue;
+    }
+    .btn-action {
+      background-color: darkgreen;
+      color: white;
+      border-radius: 50px;
+    }
+    .btn-action:hover {
+      background-color: #218838;
+    }
+    .form-control {
+      border-radius: 0.25rem;
+      box-shadow: none;
+      border: 1px solid #ced4da;
+    }
+    .form-control:focus {
+      border-color: #80bdff;
+      box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+    }
+    .form-group label {
+      font-weight: bold;
+    }
+    .font-size-lg {
+      font-size: 1.25rem;
+    }
+    .text-primary {
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Abertura de Caixa
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label for="data">Data:</label>
+                <input type="date" class="form-control" id="data">
+              </div>
+              <div class="form-group">
+                <label for="hora">Hora:</label>
+                <input type="time" class="form-control" id="hora">
+              </div>
+              <div class="form-group">
+                <label for="valorInicial">Valor Inicial:</label>
+                <input type="number" class="form-control" id="valorInicial" value="200.00" readonly>
+              </div>
+              <div class="form-group text-center">
+                <p class="font-weight-bold">Valor Total da Abertura:</p>
+                <p class="font-size-lg text-primary" id="valorTotal">R$ 200.00</p>
+              </div>
+              <div class="form-group text-center">
+                <button type="button" class="btn btn-action btn-lg btn-block mb-2">Salvar</button>
+                <a href="/pdv" class="btn btn-custom btn-lg btn-block">Ir para o PDV</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
