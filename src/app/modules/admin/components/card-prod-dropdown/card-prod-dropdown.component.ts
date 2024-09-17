@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-component-three',
-  templateUrl: './component-three.component.html',
-  styleUrl: './component-three.component.css'
+  selector: 'app-card-prod-dropdown',
+  templateUrl: './card-prod-dropdown.component.html',
+  styleUrl: './card-prod-dropdown.component.css'
 })
-export class ComponentThreeComponent {
+export class CardProdDropdownComponent {
   items = [
     {
       id: 1, class: 'Bebidas', percentange: 60,

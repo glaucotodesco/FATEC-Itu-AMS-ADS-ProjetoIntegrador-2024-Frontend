@@ -2,22 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminRoutingModule } from './admin-routing.module';
-import { ComponentOneComponent } from './components/card-top-stats/component-one.component';
-import { ComponentTwoComponent } from './components/card-medium-recepits/component-two.component';
-import { ComponentThreeComponent } from './components/card-percentage/component-three.component';
-import { ComponentFourComponent } from './components/card-graph/component-four.component';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { CardTopStatsComponent } from './components/card-top-stats/card-top-stats.component';
+import { CardMediumStatsComponent } from './components/card-medium-stats/card-medium-stats.component';
+import { CardProdDropdownComponent } from './components/card-prod-dropdown/card-prod-dropdown.component';
+import { CardGraphComponent } from './components/card-graph/card-graph.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ComponentOneComponent,
-    ComponentTwoComponent,
-    ComponentThreeComponent,
-    ComponentFourComponent
+    CardTopStatsComponent,
+    CardMediumStatsComponent,
+    CardProdDropdownComponent,
+    CardGraphComponent,
+    AboutUsComponent
   ],
   imports: [
     CommonModule,
