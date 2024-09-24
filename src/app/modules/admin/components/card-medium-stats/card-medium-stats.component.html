@@ -1,62 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="rounded p-3 p-md-4 p-lg-5" >
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./card-medium-stats.component.css">
-    <title>Document</title>
-</head>
+  <!-- Primeiro bloco -->
+  <div *ngIf="num == 1">
+      <span> Receita total</span>
+      <span style="font-size: smaller; color: grey;"> (30 dias)</span>
+      <hr>
+      <div class="display-5 " style="font-weight:500;">
+          R$ 1
+      </div>
+  </div>
 
-<body>
-   
-    <div class="rounded p-3 p-md-4 p-lg-5" >
+  <!-- Segundo bloco -->
+  <div *ngIf="num == 2">
+      <span> Receita do dia</span>
 
-        <!-- Primeiro bloco -->
-        <div *ngIf="num == 1">
-            <span> Receita total</span>
-            <span style="font-size: smaller; color: grey;"> (30 dias)</span>
-            <hr>
-            <div class="display-5 " style="font-weight:500;">
-                R$ 1
-            </div>
-        </div>
+      <hr>
+      <div class="display-5 " style="font-weight:500;">
+          R$ 2
+      </div>
+  </div>
 
-        <!-- Segundo bloco -->
-        <div *ngIf="num == 2">
-            <span> Receita do dia</span>
+  <!-- Terceiro bloco -->
+  <div *ngIf="num == 3">
+      <span> Ticket médio </span>
+      <hr>
+      <div class="">
+          <span class="display-5 " style="font-weight:500;"> R$ 3</span>
+          <span>p/cliente</span>
 
-            <hr>
-            <div class="display-5 " style="font-weight:500;">
-                R$ 2
-            </div>
-        </div>
+      </div>
 
-        <!-- Terceiro bloco -->
-        <div *ngIf="num == 3">
-            <span> Ticket médio </span>
-            <hr>
-            <div class="">
-                <span class="display-5 " style="font-weight:500;"> R$ 3</span>
-                <span>p/cliente</span>
-    
-            </div>
-            
-        </div>
+  </div>
 
-        <!-- Quarto bloco -->
-        <div *ngIf="num == 4">
-            <span> Cat. + Vendido </span>
-            <span style="font-size: smaller; color: grey;"> (30 dias)</span>
-            <hr>
-            <div class="display-5 " style="font-weight: 500;">
-                Bebidas
-            </div>
+  <!-- Quarto bloco -->
+  <div *ngIf="num == 4">
+      <span> Cat. + Vendido </span>
+      <span style="font-size: smaller; color: grey;"> (30 dias)</span>
+      <hr>
+      <div class="display-5 " style="font-weight: 500;">
+          Bebidas
+      </div>
 
-        </div>
-    </div>
-    
-
-</body>
-
-</html>
+  </div>
+</div>

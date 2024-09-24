@@ -1,39 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./card-prod-dropdown.component.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="p-5" >
-        <p>Vendas do cardápio</p>
-        
-        <hr>
+<div class="p-5" >
+  <p>Vendas do cardápio</p>
 
-    </div>
-    <!-- Dropdown dos produtos -->
-    <div ngbAccordion [closeOthers]="true" class="col">
-      @for (item of items; track item) {
-        <div ngbAccordionItem >
-          <h2 ngbAccordionHeader>
-            <button ngbAccordionButton style="background-color: #d9d9d9;">{{ item.class  }} - {{item.percentange}}%</button>
-          </h2>
-          <div ngbAccordionCollapse>
-            <div ngbAccordionBody class="overflow-auto"  style="height: 125px;">
-              <ng-template>
-                <div *ngFor="let product of item.products">
-                  <p>{{product.name}} - R$ {{product.price}} - Porcentagem: {{product.percentage}}%</p>
-                </div>
-                
-               
-              </ng-template>
-            </div>
+  <hr>
+
+</div>
+<!-- Dropdown dos produtos -->
+<div ngbAccordion [closeOthers]="true" class="col">
+@for (item of items; track item) {
+  <div ngbAccordionItem >
+    <h2 ngbAccordionHeader>
+      <button ngbAccordionButton style="background-color: #d9d9d9;">{{ item.class  }} - {{item.percentange}}%</button>
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody class="overflow-auto"  style="height: 125px;">
+        <ng-template>
+          <div *ngFor="let product of item.products">
+            <p>{{product.name}} - R$ {{product.price}} - Porcentagem: {{product.percentage}}%</p>
           </div>
-        </div>
-      }
+
+
+        </ng-template>
+      </div>
     </div>
-    
-</body>
-</html>
+  </div>
+}
+</div>
