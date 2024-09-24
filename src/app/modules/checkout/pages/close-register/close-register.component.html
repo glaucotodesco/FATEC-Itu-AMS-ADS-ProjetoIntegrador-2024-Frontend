@@ -1,0 +1,28 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4" style="width: 400px;">
+    <h2 class="text-center">Fechamento de Caixa</h2>
+    <form>
+      <div class="mb-3">
+        <label for="dataFechamento" class="form-label">Data do Fechamento</label>
+        <input type="date" class="form-control" id="dataFechamento" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="totalVendas" class="form-label">Total de Vendas</label>
+        <input type="number" class="form-control" id="totalVendas" placeholder="R$ 0,00" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="totalDespesas" class="form-label">Total de Despesas</label>
+        <input type="number" class="form-control" id="totalDespesas" placeholder="R$ 0,00" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="saldoFinal" class="form-label">Saldo Final</label>
+        <input type="number" class="form-control" id="saldoFinal" placeholder="R$ 0,00" readonly>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Fechar Caixa</button>
+    </form>
+  </div>
+</div>
