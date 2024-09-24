@@ -1,0 +1,108 @@
+<section class="container mt-3">
+  <h1 class="display-6">Categorias</h1>
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-primary me-3">Importar</button>
+  </div>
+
+  <table class="table table-borderless table-striped mt-3">
+    <thead class="table-secondary">
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col" class="text-center">Produtos</th> <!--TODO Decide the name of this col-->
+        <th scope="col">Disponível</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bebidas</td>
+        <td class="text-center">3</td>
+        <td>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          </div>
+        </td>
+        <td>
+          <button type="button" class="btn btn-secondary me-2" (click)="openModal(modalForm)">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button type="button" class="btn btn-danger" (click)="openModal(modalDelete)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>Pratos</td>
+        <td class="text-center">3</td>
+        <td>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          </div>
+        </td>
+        <td>
+          <button type="button" class="btn btn-secondary me-2" (click)="openModal(modalForm)">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button type="button" class="btn btn-danger" (click)="openModal(modalDelete)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>Sobremesas</td>
+        <td class="text-center">1</td>
+        <td>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          </div>
+        </td>
+        <td>
+          <button type="button" class="btn btn-secondary me-2" (click)="openModal(modalForm)">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button type="button" class="btn btn-danger" (click)="openModal(modalDelete)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="openModal(modalForm)">
+            <i class="bi bi-plus-lg"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+    <ul class="pagination pagination-sm">
+      <li class="page-item">
+        <a class="page-link" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link">1</a></li>
+      <li class="page-item">
+        <a class="page-link"   aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <button type="button" class="btn btn-success me-3">Salvar</button>
+  <button type="button" class="btn btn-secondary">Voltar</button>
+</section>
+
+<app-modal #modalForm [title]="'Criar categoria'">
+  <div class="mb-3">
+    <label for="nameInput" class="form-label">Nome</label>
+    <input type="text" class="form-control" id="nameInput">
+  </div>
+</app-modal>
+
+<app-modal #modalDelete [title]="'Deletar Categoria'">
+  <p>Tem certeza que deseja deletar uma categoria</p>
+</app-modal>
+
