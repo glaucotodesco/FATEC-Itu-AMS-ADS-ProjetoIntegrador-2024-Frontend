@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { WaiterRoutingModule } from './waiter-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { WaiterRoutingModule } from './waiter-routing.module';
   ],
   imports: [
     CommonModule,
-    WaiterRoutingModule
+    WaiterRoutingModule,
+    SharedModule,
   ],
   exports: [
     HomeComponent,

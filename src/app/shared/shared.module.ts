@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ModalComponent } from './components/modal/modal.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
 
 
 
 @NgModule({
   declarations: [
-    ModalComponent
+    ModalComponent,
+    MenuItemComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   exports:[
     CommonModule,
-    ModalComponent
+    ModalComponent,
+    MenuItemComponent,
   ]
 })
 export class SharedModule { }
