@@ -1,0 +1,13 @@
+<ng-template #modal let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.close()"></button>
+	</div>
+	<div class="modal-body">
+		<ng-content></ng-content>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Voltar</button>
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">Confirmar</button>
+	</div>
+</ng-template>
