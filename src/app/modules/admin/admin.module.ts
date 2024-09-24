@@ -15,8 +15,6 @@ import { AdminRoutingModule } from './admin-routing.module';
     CommonModule,
     AdminRoutingModule
   ],
-  exports:[
-    ProductsComponent
-  ]
+  exports:[]
 })
 export class AdminModule { }

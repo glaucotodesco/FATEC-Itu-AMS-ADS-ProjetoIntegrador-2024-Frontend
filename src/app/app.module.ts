@@ -13,8 +13,7 @@ import { AdminModule } from "./modules/admin/admin.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
-    AdminModule
+    NgbModule
 ],
   providers: [],
   bootstrap: [AppComponent]
