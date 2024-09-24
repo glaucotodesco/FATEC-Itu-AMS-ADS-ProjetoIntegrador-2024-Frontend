@@ -1,72 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./card-top-stats.component.css">
-    <title>Document</title>
-</head>
-
-<body>
-
-    <div class=" p-2 p-xl-3 d-flex" *ngIf="num == 1">
-        <div class="p-1 p-sm-4">
-            <i class="bi bi-list-check fs-1"></i>
+<div class=" p-2 p-xl-3 d-flex" *ngIf="num == 1">
+  <div class="p-1 p-sm-4">
+      <i class="bi bi-list-check fs-1"></i>
 
 
-        </div>
-        <div class="p-1 p-sm-4">
-            <span style="font-size: 50px; font-weight: 500;">0</span>
-            <span>horas p/ pedido</span>
-            <p>Tempo de consumação</p>
+  </div>
+  <div class="p-1 p-sm-4">
+      <span style="font-size: 50px; font-weight: 500;">0</span>
+      <span>horas p/ pedido</span>
+      <p>Tempo de consumação</p>
 
-        </div>
-
-        
-           
-
-
-    </div>
-    <div class=" container-md d-flex p-2 p-xl-3" *ngIf="num == 2">
-        <div class=" p-1 p-sm-4">
-            <i class="bi bi-check-circle fs-1" ></i>
-        </div>
-        <div class="p-1 p-sm-4">
-            <span style="font-size: 50px; font-weight: 500;">0</span>
-            <p>Quantidade de pedidos</p>
-        </div>
-
-
-
-
-    </div>
-    <div class="container-md d-flex p-3" *ngIf="num == 3">
-        <div class="p-1 p-sm-4">
-            <i class="bi bi-box-seam fs-1" ></i>
-        </div>
-        <div class="p-1 p-sm-4">
-            <span style="font-size: 50px; font-weight: 500;">0</span>
-            <p>Itens por pedido</p>
-        </div>
+  </div>
 
 
 
 
 
-    </div>
-    <div class=" rounded   text-center " *ngIf="num == 4">
-        <div class="p-4">
-            <i class="bi bi-info-circle-fill" style="font-size: 50px;"></i>
+</div>
+<div class=" container-md d-flex p-2 p-xl-3" *ngIf="num == 2">
+  <div class=" p-1 p-sm-4">
+      <i class="bi bi-check-circle fs-1" ></i>
+  </div>
+  <div class="p-1 p-sm-4">
+      <span style="font-size: 50px; font-weight: 500;">0</span>
+      <p>Quantidade de pedidos</p>
+  </div>
 
-        <p style="color: black;">Sobre nós</p>
-        </div>
+
+
+
+</div>
+<div class="container-md d-flex p-3" *ngIf="num == 3">
+  <div class="p-1 p-sm-4">
+      <i class="bi bi-box-seam fs-1" ></i>
+  </div>
+  <div class="p-1 p-sm-4">
+      <span style="font-size: 50px; font-weight: 500;">0</span>
+      <p>Itens por pedido</p>
+  </div>
 
 
 
 
-    </div>
 
-</body>
+</div>
+<div class=" rounded   text-center " *ngIf="num == 4">
+  <div class="p-4">
+      <i class="bi bi-info-circle-fill" style="font-size: 50px;"></i>
 
-</html>
+  <p style="color: black;">Sobre nós</p>
+  </div>
+
+
+
+
+</div>
