@@ -1,10 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container-fluid">
+    <span class="navbar-text">Nome: <strong>Gustavo</strong></span>
+    <span class="navbar-text">Número do Caixa: <strong>2</strong></span>
+  </div>
+</nav>
+
 <div class="container d-flex justify-content-center align-items-center vh-100">
   <div class="card p-4" style="width: 400px;">
     <h2 class="text-center">Fechamento de Caixa</h2>
     <form>
       <div class="mb-3">
-        <label for="dataFechamento" class="form-label">Data do Fechamento</label>
-        <input type="date" class="form-control" id="dataFechamento" required>
+        <label for="Pagonodinheiro" class="form-label">Pago no Dinheiro</label>
+        <input type="number" class="form-control" id="Pagonodinheiro" placeholder="R$ 0,00" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="Pagonocartao" class="form-label">Pago no Cartão</label>
+        <input type="number" class="form-control" id="Pagonocartao" placeholder="R$ 0,00" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="Pagonopix" class="form-label">Pago no Pix</label>
+        <input type="number" class="form-control" id="Pagonopix" placeholder="R$ 0,00" required>
       </div>
 
       <div class="mb-3">
@@ -13,8 +30,8 @@
       </div>
 
       <div class="mb-3">
-        <label for="totalDespesas" class="form-label">Total de Despesas</label>
-        <input type="number" class="form-control" id="totalDespesas" placeholder="R$ 0,00" required>
+        <label for="diferenca" class="form-label">Diferença</label>
+        <input type="number" class="form-control" id="diferenca" placeholder="R$ 0,00" required>
       </div>
 
       <div class="mb-3">
