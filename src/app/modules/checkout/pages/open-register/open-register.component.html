@@ -1,1 +1,122 @@
-<p>open-register works!</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abertura de Caixa</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background-color: #f0f0f0; /* Fundo cinza claro */
+      font-family: 'Arial', sans-serif;
+    }
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      background: white;
+    }
+    .card-header {
+      background-color: #000; /* Preto */
+      color: #fff; /* Branco */
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+    }
+    .horario-login {
+      position: absolute;
+      left: 15px; /* Canto esquerdo */
+      top: 15px;
+      font-size: 1.2rem; /* Tamanho da fonte */
+      color: #ff9800; /* Laranja */
+      font-weight: bold; /* Negrito */
+    }
+    .horario-icon {
+      margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+    }
+    .btn-custom {
+      background-color: #ff9800; /* Laranja */
+      color: white;
+      border-radius: 50px;
+    }
+    .btn-custom:hover {
+      background-color: #e68a00; /* Laranja escuro */
+    }
+    .btn-action {
+      background-color: #000; /* Preto */
+      color: #ff9800; /* Laranja */
+      border-radius: 50px;
+    }
+    .btn-action:hover {
+      background-color: #333; /* Cinza escuro */
+    }
+    .form-control {
+      border-radius: 0.25rem;
+      box-shadow: none;
+      border: 1px solid #ced4da;
+    }
+    .form-control:focus {
+      border-color: #ff9800; /* Laranja */
+      box-shadow: 0 0 0 0.2rem rgba(255, 152, 0, 0.25);
+    }
+    .form-group label {
+      font-weight: bold;
+      color: #333; /* Cinza escuro */
+    }
+    .font-size-lg {
+      font-size: 1.25rem;
+    }
+    .text-primary {
+      color: #ff9800; /* Laranja */
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Abertura de Caixa
+            <div class="horario-login" id="horarioLogin">
+              <i class="fas fa-clock horario-icon"></i> 12:30
+            </div>
+          </div>
+          <div class="card-body">
+            <form id="formCaixa">
+              <div class="form-group">
+                <label for="usuario">Usuário:</label>
+                <input type="text" class="form-control" id="usuario" value="Nome do Usuário" readonly>
+              </div>
+              <div class="form-group">
+                <label for="valorInicial">Valor Inicial:</label>
+                <input type="number" class="form-control" id="valorInicial" value="200.00">
+              </div>
+              <div class="form-group text-center">
+                <p class="font-weight-bold">Valor Total da Abertura:</p>
+                <p class="font-size-lg text-primary" id="valorTotal">R$ 200.00</p>
+              </div>
+              <div class="form-group text-center">
+                <button type="button" class="btn btn-action btn-lg btn-block mb-2" id="btnSalvar">Salvar</button>
+                <a href="/pdv" class="btn btn-custom btn-lg btn-block">Ir para o PDV</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    document.getElementById('btnSalvar').addEventListener('click', function() {
+      const valorInicial = document.getElementById('valorInicial').value;
+      document.getElementById('valorTotal').textContent = 'R$ ' + parseFloat(valorInicial).toFixed(2);
+      alert('Valor salvo: R$ ' + valorInicial);
+    });
+  </script>
+</body>
+</html>
