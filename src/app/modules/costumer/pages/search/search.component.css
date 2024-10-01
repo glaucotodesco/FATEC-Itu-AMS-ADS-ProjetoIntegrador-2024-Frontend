@@ -1,0 +1,21 @@
+button {
+  border: none;
+  background: none;
+  text-decoration: 1px underline;
+}
+
+.input-group-text {
+  background-color: #d9d9d9;
+  color: black;
+}
+.search {
+  background-color: #d9d9d9;
+  color: black;
+}
+.bg-grill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d9d9d9;
+  color: black;
+}
