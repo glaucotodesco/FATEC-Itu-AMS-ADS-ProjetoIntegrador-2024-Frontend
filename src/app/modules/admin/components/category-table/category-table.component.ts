@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-category-table',
@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrl: './category-table.component.css'
 })
 export class CategoryTableComponent {
+  @Output()
+  editEmitter = new EventEmitter();
 
+  @Output()
+  removeEmitter = new EventEmitter();
+
+  edit(){
+    this.editEmitter.emit();
+  }
+
+  remove(){
+    this.removeEmitter.emit();
+  }
 }

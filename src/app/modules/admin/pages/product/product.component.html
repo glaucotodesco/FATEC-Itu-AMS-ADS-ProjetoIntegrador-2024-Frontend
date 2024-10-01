@@ -2,18 +2,9 @@
   <form>
     <div class="row">
       <div class="col-6">
-        <div class="row">
-          <div class="col">
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="imageInput">
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="nameInput" placeholder=".">
-              <label for="nameInput">Nome</label>
-            </div>
-          </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="nameInput" placeholder=".">
+          <label for="nameInput">Nome</label>
         </div>
         <div class="form-floating mb-3">
           <textarea class="form-control" id="descriptionInput" placeholder="."></textarea>
@@ -21,6 +12,9 @@
         </div>
         <div class="d-flex justify-content-center border mb-3 p-3 rounded">
           <img src="https://cdn-icons-png.flaticon.com/128/994/994545.png" class="rounded align-self-center mb-3">
+        </div>
+        <div class="input-group mb-3">
+          <input type="file" class="form-control" id="imageInput">
         </div>
       </div>
       <div class="col-6">
@@ -48,7 +42,4 @@
       </div>
     </div>
   </form>
-
-  <button type="button" class="btn btn-success me-3">Salvar</button>
-  <button type="button" class="btn btn-secondary">Voltar</button>
 </section>
