@@ -6,6 +6,8 @@ import { OrdersSlipComponent } from './components/orders-slip/orders-slip.compon
 import { CheckoutRoutingModule } from './checkout-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { OrderRegisterComponent } from './components/order-register/order-register.component';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { CreateOrderComponent } from './components/create-order/create-order.component';
 
 
 
@@ -14,7 +16,9 @@ import { OrderRegisterComponent } from './components/order-register/order-regist
     OpenRegisterComponent,
     HomeComponent,
     OrdersSlipComponent,
-    OrderRegisterComponent
+    OrderRegisterComponent,
+    TabsComponent,
+    CreateOrderComponent
   ],
   imports: [
     CommonModule,
