@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -42,7 +41,7 @@
                 <th>V. Uni</th>
                 <th>Adic.</th>
                 <th>Valor</th>
-                <th></th>
+                <th>Remover</th>
               </tr>
             </thead>
             <tbody>
@@ -52,7 +51,10 @@
                 <td>R$5</td>
                 <td>R$1</td>
                 <td>R$6</td>
-                <td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+                <td>
+                  <input type="text" class="form-control mb-1" placeholder="Razão da remoção">
+                  <button type="button" class="btn btn-danger btn-sm">Remover</button>
+                </td>
               </tr>
               <tr>
                 <td>Coca-cola</td>
@@ -60,13 +62,17 @@
                 <td>R$1</td>
                 <td>R$1</td>
                 <td>R$2</td>
-                <td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+                <td>
+                  <input type="text" class="form-control mb-1" placeholder="Razão da remoção">
+                  <button type="button" class="btn btn-danger btn-sm">Remover</button>
+                </td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
                 <td colspan="4" class="text-end">Subtotal</td>
                 <td>R$8</td>
+                <td></td>
               </tr>
             </tfoot>
           </table>
@@ -88,7 +94,7 @@
                 <th>V. Uni</th>
                 <th>Adic.</th>
                 <th>Valor</th>
-                <th></th>
+                <th>Remover</th>
               </tr>
             </thead>
             <tbody>
@@ -98,7 +104,10 @@
                 <td>R$7</td>
                 <td>R$1.5</td>
                 <td>R$8.5</td>
-                <td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+                <td>
+                  <input type="text" class="form-control mb-1" placeholder="Razão da remoção">
+                  <button type="button" class="btn btn-danger btn-sm">Remover</button>
+                </td>
               </tr>
               <tr>
                 <td>Guaraná</td>
@@ -106,13 +115,17 @@
                 <td>R$2</td>
                 <td>R$0.5</td>
                 <td>R$2.5</td>
-                <td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+                <td>
+                  <input type="text" class="form-control mb-1" placeholder="Razão da remoção">
+                  <button type="button" class="btn btn-danger btn-sm">Remover</button>
+                </td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
                 <td colspan="4" class="text-end">Subtotal</td>
                 <td>R$11</td>
+                <td></td>
               </tr>
             </tfoot>
           </table>
@@ -130,6 +143,14 @@
         </div>
 
         <div class="form-group mb-4">
+          <label for="scan-code">Escanear pelo Código de Barras:</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="scan-code" name="scan-code" placeholder="Ex: 0000" readonly autofocus>
+            <button class="btn btn-success" type="button">Escanear</button>
+          </div>
+        </div>
+
+        <div class="form-group mb-4">
           <label for="payment">Forma de Pagamento:</label>
           <select class="form-select" id="payment" name="payment">
             <option value="credit">Crédito</option>
@@ -140,8 +161,8 @@
         </div>
 
         <div class="form-group mb-4">
-          <label for="amount">Valor Subtotal:</label>
-          <input type="text" class="form-control" id="amount" name="amount">
+          <label for="subtotal">Valor Subtotal:</label>
+          <input type="text" class="form-control" id="subtotal" name="subtotal" readonly>
         </div>
 
         <div class="form-group mb-4">
@@ -150,9 +171,14 @@
         </div>
 
         <div class="form-group mb-4">
-            <label for="amount">Valor Total:</label>
-            <input type="text" class="form-control" id="amount" name="amount">
-          </div>
+          <label for="remaining-amount">Valor restante a ser pago:</label>
+          <input type="text" class="form-control" id="remaining-amount" name="remaining-amount" readonly>
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="total-amount">Valor Total:</label>
+          <input type="text" class="form-control" id="total-amount" name="total-amount" readonly>
+        </div>
 
         <button type="button" class="btn btn-primary btn-custom">Finalizar</button>
       </div>
