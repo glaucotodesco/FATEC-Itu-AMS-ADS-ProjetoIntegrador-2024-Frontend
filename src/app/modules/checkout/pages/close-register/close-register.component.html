@@ -1,7 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
   <div class="container-fluid">
-    <span class="navbar-text">Nome: <strong>Gustavo</strong></span>
-    <span class="navbar-text">Número do Caixa: <strong>2</strong></span>
   </div>
 </nav>
 
@@ -10,36 +8,60 @@
     <h2 class="text-center">Fechamento de Caixa</h2>
     <form>
       <div class="mb-3">
+        <label for="operador" class="form-label">Operador do Caixa</label>
+        <select class="form-select" id="operador" required>
+          <option value="" disabled selected>Selecione um operador</option>
+          <option value="gustavo">Gustavo</option>
+          <option value="maria">Maria</option>
+          <option value="joao">João</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="DatadeAbertura" class="form-label">Data de Abertura</label>
+        <input type="date" class="form-control" id="DatadeAbertura" required>
+      </div>
+      <div class="mb-3">
         <label for="Pagonodinheiro" class="form-label">Pago no Dinheiro</label>
-        <input type="number" class="form-control" id="Pagonodinheiro" placeholder="R$ 0,00" required>
+        <input type="number" class="form-control" id="Pagonodinheiro" value="0" readonly>
       </div>
 
       <div class="mb-3">
         <label for="Pagonocartao" class="form-label">Pago no Cartão</label>
-        <input type="number" class="form-control" id="Pagonocartao" placeholder="R$ 0,00" required>
+        <div class="input-group">
+          <select class="form-select" id="tipoCartao">
+            <option value="credito">Crédito</option>
+            <option value="debito">Débito</option>
+          </select>
+          <input type="number" class="form-control" id="Pagonocartao" value="0" readonly>
+        </div>
       </div>
 
       <div class="mb-3">
         <label for="Pagonopix" class="form-label">Pago no Pix</label>
-        <input type="number" class="form-control" id="Pagonopix" placeholder="R$ 0,00" required>
+        <input type="number" class="form-control" id="Pagonopix" value="0" readonly>
       </div>
 
       <div class="mb-3">
         <label for="totalVendas" class="form-label">Total de Vendas</label>
-        <input type="number" class="form-control" id="totalVendas" placeholder="R$ 0,00" required>
+        <input type="number" class="form-control" id="totalVendas" value="0" readonly>
       </div>
 
       <div class="mb-3">
         <label for="diferenca" class="form-label">Diferença</label>
-        <input type="number" class="form-control" id="diferenca" placeholder="R$ 0,00" required>
+        <input type="number" class="form-control" id="diferenca" value="0" readonly>
       </div>
 
       <div class="mb-3">
         <label for="saldoFinal" class="form-label">Saldo Final</label>
-        <input type="number" class="form-control" id="saldoFinal" placeholder="R$ 0,00" readonly>
+        <input type="text" class="form-control" id="saldoFinal" value="0">
       </div>
 
-      <button type="submit" class="btn btn-primary w-100">Fechar Caixa</button>
+
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-primary">Calcular</button>
+        <button type="button" class="btn btn-primary">Fechar Caixa</button>
+      </div>
     </form>
   </div>
 </div>
