@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { CostumerRoutingModule } from './costumer-routing.module';
 
 
 
@@ -11,7 +12,12 @@ import { MenuComponent } from './pages/menu/menu.component';
     MenuComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CostumerRoutingModule
+  ],
+  exports: [
+    HomeComponent,
+    MenuComponent
   ]
 })
 export class CostumerModule { }
