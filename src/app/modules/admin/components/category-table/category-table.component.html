@@ -1,5 +1,5 @@
 <div class="d-flex">
-  <h2>Bebidas</h2>
+  <h2>{{category.category}}</h2>
   <button type="button" class="btn">
     <i class="bi bi-pencil-square"></i>
   </button>
@@ -14,46 +14,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Coca-cola</td>
-      <td>$1</td>
+    <tr *ngFor="let p of category.products">
+      <td>{{p.name}}</td>
+      <td>{{p.price | currency: 'BRL'}}</td>
       <td>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch">
-        </div>
-      </td>
-      <td>
-        <button type="button" class="btn btn-secondary me-2">
-          <i class="bi bi-pencil-square"></i>
-        </button>
-        <button type="button" class="btn btn-danger">
-          <i class="bi bi-trash-fill"></i>
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>Água</td>
-      <td>$1</td>
-      <td>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch">
-        </div>
-      </td>
-      <td>
-        <button type="button" class="btn btn-secondary me-2">
-          <i class="bi bi-pencil-square"></i>
-        </button>
-        <button type="button" class="btn btn-danger">
-          <i class="bi bi-trash-fill"></i>
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>Itubaína</td>
-      <td>$1</td>
-      <td>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch">
+          <input class="form-check-input" type="checkbox" role="switch" [checked]="p.active">
         </div>
       </td>
       <td>

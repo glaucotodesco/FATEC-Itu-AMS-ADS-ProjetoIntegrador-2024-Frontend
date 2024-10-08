@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-category-table',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class CategoryTableComponent {
 
+  @Input()
+  category : any = {};
 }
