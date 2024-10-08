@@ -6,8 +6,9 @@ import { OrdersSlipComponent } from './components/orders-slip/orders-slip.compon
 import { CheckoutRoutingModule } from './checkout-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { OrderRegisterComponent } from './components/order-register/order-register.component';
-import { TabsComponent } from './components/tabs/tabs.component';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
+import { AddCashComponent } from './components/add-cash/add-cash.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,13 +18,14 @@ import { CreateOrderComponent } from './components/create-order/create-order.com
     HomeComponent,
     OrdersSlipComponent,
     OrderRegisterComponent,
-    TabsComponent,
-    CreateOrderComponent
+    CreateOrderComponent,
+    AddCashComponent
   ],
   imports: [
     CommonModule,
     CheckoutRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class CheckoutModule { }

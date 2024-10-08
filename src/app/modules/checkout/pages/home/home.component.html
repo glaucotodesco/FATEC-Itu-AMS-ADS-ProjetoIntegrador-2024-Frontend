@@ -1,8 +1,8 @@
-
-
-    <div class="col-md-6 border p-4 rounded shadow">
-      <h2 class="display-6 text-center mb-4">Comandas em Aberto</h2>
-      <table class="table table-striped table-borderless">
+<div class="container">
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-5 border p-3 rounded shadow">
+      <h5 class="text-center mb-2">Comandas em Aberto</h5>
+      <table class="table table-striped table-borderless table-sm">
         <thead class="table-secondary">
           <tr>
             <th>Comanda</th>
@@ -19,29 +19,61 @@
             <td>19:00</td>
             <td>Balcão</td>
             <td>
-              <button class="btn btn-secondary">
+              <button class="btn btn-secondary btn-sm" (click)="openModal(modalOrder)">
                 <i class="bi bi-highlighter"></i>
               </button>
-              <button class="btn btn-warning">Checkout</button>
+              <button class="btn btn-primary btn-sm">Checkout</button>
             </td>
           </tr>
-          <nav aria-label="..."></nav>
-  <ul class="pagination pagination-sm">
-    <li class="page-item active" aria-current="page">
-      <span class="page-link">1</span>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-  </ul>
+          <tr>
+            <td>124</td>
+            <td>R$ 30,00</td>
+            <td>19:15</td>
+            <td>Balcão</td>
+            <td>
+              <button class="btn btn-secondary btn-sm" (click)="openModal(modalOrder)">
+                <i class="bi bi-highlighter"></i>
+              </button>
+              <button class="btn btn-primary btn-sm">Checkout</button>
+            </td>
+          </tr>
+          <tr>
+            <td>125</td>
+            <td>R$ 22,50</td>
+            <td>19:30</td>
+            <td>Balcão</td>
+            <td>
+              <button class="btn btn-secondary btn-sm" (click)="openModal(modalOrder)">
+                <i class="bi bi-highlighter"></i>
+              </button>
+              <button class="btn btn-primary btn-sm">Checkout</button>
+            </td>
+          </tr>
+          <tr>
+            <td>126</td>
+            <td>R$ 18,00</td>
+            <td>19:45</td>
+            <td>Balcão</td>
+            <td>
+              <button class="btn btn-secondary btn-sm" (click)="openModal(modalOrder)">
+                <i class="bi bi-highlighter"></i>
+              </button>
+              <button class="btn btn-primary btn-sm">Checkout</button>
+            </td>
+          </tr>
         </tbody>
       </table>
-    </div>
+      <div class="d-flex justify-content-center">
+        <ul class="pagination pagination-sm">
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">1</span>
+          </li>
+          <li class="page-item"><a class="page-link">2</a></li>
+        </ul>
+      </div>
 
-
-  <div class="row justify-content-center mb-4">
-    <div class="col-md-6 border p-4 rounded shadow me-2">
-      <h2 class="display-6 text-center mb-4">Comandas Fechadas</h2>
-      <table class="table table-striped table-borderless">
+      <h5 class="text-center mb-2">Comandas Fechadas</h5>
+      <table class="table table-striped table-borderless table-sm">
         <thead class="table-secondary">
           <tr>
             <th>Comanda</th>
@@ -52,36 +84,66 @@
         </thead>
         <tbody>
           <tr>
-            <td>124</td>
-            <td>R$ 30,00</td>
+            <td>129</td>
+            <td>R$ 40,00</td>
             <td>18:30</td>
             <td>Balcão</td>
-          </tr>  <ul class="pagination pagination-sm">
-            <li class="page-item active" aria-current="page">
-              <span class="page-link">1</span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-          </ul>
-
+          </tr>
+          <tr>
+            <td>130</td>
+            <td>R$ 35,00</td>
+            <td>18:45</td>
+            <td>Balcão</td>
+          </tr>
+          <tr>
+            <td>131</td>
+            <td>R$ 50,00</td>
+            <td>19:00</td>
+            <td>Balcão</td>
+          </tr>
+          <tr>
+            <td>132</td>
+            <td>R$ 45,00</td>
+            <td>19:15</td>
+            <td>Balcão</td>
+          </tr>
         </tbody>
       </table>
+      <div class="d-flex justify-content-center">
+        <ul class="pagination pagination-sm">
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">1</span>
+          </li>
+          <li class="page-item"><a class="page-link">2</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="col-md-6 border p-4 rounded shadow">
-      <h3 class="text-center">Adicionar Dinheiro ao Caixa</h3>
-      <form>
-        <div class="mb-3">
-          <label for="valorAdicionado" class="form-label">Valor a adicionar</label>
-          <input type="text" class="form-control" id="valorAdicionado" placeholder="R$ 0,00">
-        </div>
-        <button type="submit" class="btn btn-success w-100">Adicionar</button>
-      </form>
+    <div class="col-md-5 border p-3 rounded shadow ms-2">
+      <h5 class="text-center mb-2">Registrar Pedido</h5>
+      <button class="btn btn-primary w-100 btn-sm mb-2" (click)="openModal(modalRegister)">
+        Adicionar Itens
+      </button>
     </div>
   </div>
 
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-5 d-flex justify-content-center">
+      <button class="btn btn-primary btn-sm" (click)="openModal(modalCash)">
+        Adicionar Dinheiro ao Caixa
+      </button>
+    </div>
+  </div>
 
-    <app-modal #modalOrder [title]="'Editar Registro'">
-      <app-order-register></app-order-register>
-    </app-modal>
+  <app-modal #modalOrder [title]="'Editar Registro'">
+    <app-order-register></app-order-register>
+  </app-modal>
 
+  <app-modal #modalRegister [title]="'Registrar Pedido'">
+    <app-create-order></app-create-order>
+  </app-modal>
+
+  <app-modal #modalCash [title]="'Adicionar Dinheiro'">
+    <app-add-cash></app-add-cash>
+  </app-modal>
+</div>

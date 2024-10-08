@@ -1,127 +1,51 @@
-<div class="container">
-  <div class="row justify-content-center mb-4">
-    <div class="col-md-6 border p-4 rounded shadow me-2">
-      <h2 class="display-6 text-center mb-4">Registrar Pedido (Balcão)</h2>
+<div class="mb-2">
+  <label for="comandaInput" class="form-label">Número da Comanda</label>
+  <input type="text" class="form-control form-control-sm" id="comandaInput" placeholder="Digite o número da comanda">
+</div>
 
-      <div class="mb-4">
-        <label for="categoriaSelect" class="form-label">Escolha uma Categoria</label>
-        <select class="form-select" id="categoriaSelect" onchange="document.querySelectorAll('.produto-categoria').forEach(cat => cat.style.display = 'none'); document.getElementById(this.value).style.display = 'block';">
-          <option selected>Selecione...</option>
-          <option value="pratoPrincipal">Prato Principal</option>
-          <option value="sobremesa">Sobremesa</option>
-          <option value="bebidas">Bebidas</option>
-        </select>
+<div class="mb-2">
+  <label for="categoriaSelect" class="form-label">Categoria</label>
+  <select class="form-select form-select-sm" id="categoriaSelect" [(ngModel)]="categoriaSelecionada">
+    <option value="pratosPrincipais">Prato Principal</option>
+    <option value="sobremesas">Sobremesa</option>
+    <option value="bebidas">Bebidas</option>
+  </select>
+</div>
+
+<div id="produtos" class="mb-2" *ngIf="categoriaSelecionada">
+  <label for="produtoInput" class="form-label">Pesquisar Produto</label>
+  <input type="text" class="form-control form-control-sm" [(ngModel)]="pesquisa" placeholder="Digite o nome do produto">
+
+  <div *ngIf="pesquisa">
+    <div *ngIf="categoriaSelecionada === 'pratosPrincipais'">
+      <div *ngFor="let produto of filtrarProdutos(pratosPrincipais)">
+        <h6 class="card-title">{{ produto.nome }}</h6>
+        <p class="card-text">R$ {{ produto.preco.toFixed(2) }}</p>
+        <button class="btn btn-primary btn-sm">Adicionar</button>
       </div>
-
-      <div id="produtos">
-        <div id="pratoPrincipal" class="produto-categoria" style="display: none;">
-          <h4 class="mb-3">Prato Principal</h4>
-          <div id="carouselPratoPrincipal" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="card-deck mb-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Hambúrguer</h5>
-                      <p class="card-text">R$ 25,00</p>
-                      <button class="btn btn-primary">Adicionar</button>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Pizza</h5>
-                      <p class="card-text">R$ 30,00</p>
-                      <button class="btn btn-primary">Adicionar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselPratoPrincipal" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselPratoPrincipal" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Próximo</span>
-            </button>
-          </div>
-        </div>
-
-        <div id="sobremesa" class="produto-categoria" style="display: none;">
-          <h4 class="mb-3">Sobremesa</h4>
-          <div id="carouselSobremesa" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="card-deck mb-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Pudim</h5>
-                      <p class="card-text">R$ 10,00</p>
-                      <button class="btn btn-primary">Adicionar</button>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Torta de Limão</h5>
-                      <p class="card-text">R$ 12,00</p>
-                      <button class="btn btn-primary">Adicionar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselSobremesa" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselSobremesa" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Próximo</span>
-            </button>
-          </div>
-        </div>
-
-        <div id="bebidas" class="produto-categoria" style="display: none;">
-          <h4 class="mb-3">Bebidas</h4>
-          <div id="carouselBebidas" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="card-deck mb-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Refrigerante</h5>
-                      <p class="card-text">R$ 5,00</p>
-                      <button class="btn btn-primary">Adicionar</button>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Suco Natural</h5>
-                      <p class="card-text">R$ 7,00</p>
-                      <button class="btn btn-primary">Adicionar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselBebidas" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselBebidas" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Próximo</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <h4 class="mt-4">Itens Adicionados</h4>
-      <ul class="list-group mb-4">
-        <li class="list-group-item">1 x Refrigerante</li>
-        <li class="list-group-item">1 x Hambúrguer</li>
-        <li class="list-group-item">1 x Pudim</li>
-      </ul>
-      <button class="btn btn-success w-100">Adicionar Pedido</button>
     </div>
+
+    <div *ngIf="categoriaSelecionada === 'sobremesas'">
+      <div *ngFor="let produto of filtrarProdutos(sobremesas)">
+        <h6 class="card-title">{{ produto.nome }}</h6>
+        <p class="card-text">R$ {{ produto.preco.toFixed(2) }}</p>
+        <button class="btn btn-primary btn-sm">Adicionar</button>
+      </div>
+    </div>
+
+    <div *ngIf="categoriaSelecionada === 'bebidas'">
+      <div *ngFor="let produto of filtrarProdutos(bebidas)">
+        <h6 class="card-title">{{ produto.nome }}</h6>
+        <p class="card-text">R$ {{ produto.preco.toFixed(2) }}</p>
+        <button class="btn btn-primary btn-sm">Adicionar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h6 class="mt-2">Itens Adicionados</h6>
+<ul class="list-group mb-2">
+  <li class="list-group-item">1 x Refrigerante</li>
+  <li class="list-group-item">1 x Hambúrguer</li>
+  <li class="list-group-item">1 x Pudim</li>
+</ul>
