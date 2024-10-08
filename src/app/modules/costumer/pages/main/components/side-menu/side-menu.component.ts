@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './side-menu.component.css'
 })
 export class SideMenuComponent {
+  activeItem: number = 0; 
 
+  setActiveItem(index: number) {
+    this.activeItem = index;
+  }
 }
