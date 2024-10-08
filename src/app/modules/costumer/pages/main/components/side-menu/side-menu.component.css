@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black; /* Cor do texto para contraste */
+}
+.sidebar {
+  height: 100%;
+  width: 200px; /* Largura do menu lateral */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white; /* Cor do menu lateral */
+  padding-top: 20px;
+}
+.sidebar h2 {
+  font-size: 16px; /* Tamanho menor para o título */
+  margin: 0 0 15px; /* Margem abaixo do título */
+  display: inline; /* Para que o X e o título fiquem na mesma linha */
+}
+.close-btn {
+  display: inline-block; /* Para o SVG funcionar corretamente */
+  width: 16px; /* Tamanho do X */
+  height: 16px; /* Tamanho do X */
+  vertical-align: middle; /* Alinha verticalmente com o texto */
+  margin-right: 10px; /* Espaço entre o X e o título */
+}
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+}
+.sidebar a:hover {
+  background-color: #f0f0f0; /* Cor ao passar o mouse */
+}
+.separator {
+  height: 1px; /* Altura da linha */
+  background-color: black; /* Cor da linha */
+  margin: 14px 0; /* Espaço acima e abaixo da linha */
+}
+.content {
+  margin-left: 220px; /* Espaço para o menu lateral */
+  padding: 20px;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black; /* Cor do texto para contraste */
+}
+.sidebar {
+  height: 100%;
+  width: 200px; /* Largura do menu lateral */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white; /* Cor do menu lateral */
+  padding-top: 20px;
+}
+.sidebar h2 {
+  font-size: 16px; /* Tamanho menor para o título */
+  margin: 0 0 15px; /* Margem abaixo do título */
+  display: inline; /* Para que o X e o título fiquem na mesma linha */
+}
+.close-btn {
+  display: inline-block; /* Para o SVG funcionar corretamente */
+  width: 16px; /* Tamanho do X */
+  height: 16px; /* Tamanho do X */
+  vertical-align: middle; /* Alinha verticalmente com o texto */
+  margin-right: 10px; /* Espaço entre o X e o título */
+}
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+}
+.sidebar a:hover {
+  background-color: #f0f0f0; /* Cor ao passar o mouse */
+}
+.separator {
+  height: 1px; /* Altura da linha */
+  background-color: black; /* Cor da linha */
+  margin: 14px 0; /* Espaço acima e abaixo da linha */
+}
+.content {
+  margin-left: 220px; /* Espaço para o menu lateral */
+  padding: 20px;
+}
