@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <h1 class="text-center">Buscar Pedidos</h1>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Digite o número da comanda ou nome do cliente"
+        
+      />
+      <div class="input-group-append">
+        <button class="btn btn-success" (click)="searchOrders()">Buscar</button>
+      </div>
+    </div>
+  
+    <table *ngIf="orders.length > 0" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Comanda</th>
+          <th>Cliente</th>
+          <th>Data</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.comanda }}</td>
+          <td>{{ order.cliente }}</td>
+          <td>{{ order.data | date }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.total | currency }}</td>
+          <td>
+            <button class="btn btn-info" (click)="viewDetails(order)">Detalhes</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="noResults" class="alert alert-warning">Nenhum pedido encontrado.</div>
+  </div>
+  
