@@ -1,4 +1,4 @@
- <div class="container mt-5"></div>
+<div class="container mt-5"></div>
 <div class="row justify-content-center">
   <div class="col-md-6">
     <div class="card shadow-sm" style="background-color: #f0f0f0; color: #000;">
@@ -17,11 +17,17 @@
         <form id="formCaixa">
           <div class="form-group">
             <label for="numeroCaixa" class="font-weight-bold" style="color: #343a40;">Número do Caixa Selecionado:</label>
-            <input type="text" class="form-control" id="numeroCaixa" value="Número do Caixa" readonly style="background-color: #f8f9fa; color: #000;">
+            <select id="numeroCaixa" class="form-control" style="background-color: #f8f9fa; color: #000;">
+              <option value="" disabled selected>Selecione um caixa fechado</option>
+              <option value="1">Caixa 1</option>
+              <option value="2">Caixa 2</option>
+              <option value="3">Caixa 3</option>
+              <!-- Adicione outras opções de caixas fechados aqui -->
+            </select>
           </div>
           <div class="form-group">
             <label for="valorInicial" class="font-weight-bold" style="color: #343a40;">Valor Inicial:</label>
-            <input type="number" class="form-control" id="valorInicial" placeholder="Digite o valor inicial" style="background-color: #f8f9fa; color: #000;">
+            <input type="number" class="form-control" id="valorInicial" placeholder="Digite o valor inicial" style="background-color: #f8f9fa; color: #000;" oninput="checkValorInicial()">
           </div>
           <div class="form-group text-center">
             <p class="font-weight-bold" style="color: #000;">Valor Total da Abertura:</p>
@@ -29,10 +35,18 @@
           </div>
           <div class="form-group text-center">
             <button type="button" class="btn btn-primary btn-lg mb-2" (click)="salvar()" style="width: 100%;">Salvar</button>
-            <a href="/pdv" class="btn btn-outline-dark btn-lg" style="width: 100%;">Ir para o PDV</a>
+            <a href="/pdv" id="btnIrParaPDV" class="btn btn-outline-dark btn-lg" style="width: 100%;" disabled>Ir para o PDV</a>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  function checkValorInicial() {
+    const valorInicial = document.getElementById('valorInicial').value;
+    const btnIrParaPDV = document.getElementById('btnIrParaPDV');
+    btnIrParaPDV.disabled = !valorInicial; // Habilita o botão se houver valor inicial
+  }
+</script>
