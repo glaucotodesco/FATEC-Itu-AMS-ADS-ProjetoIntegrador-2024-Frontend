@@ -40,9 +40,40 @@
           <label for="categorieInput">Categoria</label>
         </div>
         <label>Praças: </label>
-        <span class="badge text-bg-primary ms-2">Fritura</span>
-        <span class="badge text-bg-success ms-2">Assados</span>
-        <span class="badge text-bg-secondary ms-2">+</span>
+        <table class="table table-borderless table-striped mt-3">
+          <thead class="table-secondary">
+            <tr>
+              <th scope="col">Praça</th>
+              <th scope="col">Itens</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge rounded-pill text-bg-primary ms-2">Fritura</span></td>
+              <td><input type="text" class="form-control"></td>
+              <td>
+                <button type="button" class="btn btn-danger">
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge rounded-pill text-bg-success ms-2">Assados</span></td>
+              <td><input type="text" class="form-control"></td>
+              <td>
+                <button type="button" class="btn btn-danger">
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge rounded-pill text-bg-secondary ms-2">+</span></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </form>
