@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalComponent } from '../../../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-product',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
-
+  openModal(modal : ModalComponent){
+    modal.open();
+  }
 }

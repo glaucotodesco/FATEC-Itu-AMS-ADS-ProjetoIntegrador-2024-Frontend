@@ -33,13 +33,12 @@
         <div class="form-floating mb-3">
           <select class="form-select" id="categorieInput" aria-label="Categoria">
             <option selected>Selecione uma categoria</option>
-            <option value="1">Bebida</option>
+            <option value="1">Bebidas</option>
             <option value="2">Pratos</option>
             <option value="3">Sobremesas</option>
           </select>
           <label for="categorieInput">Categoria</label>
         </div>
-        <label>Praças: </label>
         <table class="table table-borderless table-striped mt-3">
           <thead class="table-secondary">
             <tr>
@@ -68,7 +67,7 @@
               </td>
             </tr>
             <tr>
-              <td><span class="badge rounded-pill text-bg-secondary ms-2">+</span></td>
+              <td><button (click)="openModal(modalSquare)" type="button" class="btn btn-primary">+</button></td>
               <td></td>
               <td></td>
             </tr>
@@ -78,3 +77,14 @@
     </div>
   </form>
 </section>
+
+<app-modal #modalSquare [title]="'Selecione uma Praça'">
+  <div class="list-group">
+    <a class="list-group-item list-group-item-action">
+      <span class="badge rounded-pill text-bg-primary ms-2">Fritura</span>
+    </a>
+    <a class="list-group-item list-group-item-action">
+      <span class="badge rounded-pill text-bg-success ms-2">Assados</span>
+    </a>
+  </div>
+</app-modal>
