@@ -1,63 +1,51 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-  <div class="container-fluid">
-  </div>
+  <div class="container-fluid"></div>
 </nav>
-
 <div class="container d-flex justify-content-center align-items-center vh-100">
   <div class="card p-4" style="width: 400px;">
     <h2 class="text-center">Fechamento de Caixa</h2>
     <form>
       <div class="mb-3">
-        <label for="operador" class="form-label">Operador do Caixa</label>
-        <select class="form-select" id="operador" required>
-          <option value="" disabled selected>Selecione um operador</option>
-          <option value="gustavo">Gustavo</option>
-          <option value="maria">Maria</option>
-          <option value="joao">João</option>
+        <label for="caixaSelect" class="form-label">Selecione o Caixa</label>
+        <select class="form-select" id="caixaSelect" required>
+          <option value="" disabled selected>Escolha um caixa</option>
+          <option value="1">Caixa 1</option>
+          <option value="2">Caixa 2</option>
+          <option value="3">Caixa 3</option>
         </select>
       </div>
-
       <div class="mb-3">
         <label for="DatadeAbertura" class="form-label">Data de Abertura</label>
         <input type="date" class="form-control" id="DatadeAbertura" required>
       </div>
       <div class="mb-3">
         <label for="Pagonodinheiro" class="form-label">Pago no Dinheiro</label>
-        <input type="number" class="form-control" id="Pagonodinheiro" value="0" readonly>
+        <input type="number" class="form-control" id="Pagonodinheiro" value="151" readonly>
       </div>
-
       <div class="mb-3">
-        <label for="Pagonocartao" class="form-label">Pago no Cartão</label>
-        <div class="input-group">
-          <select class="form-select" id="tipoCartao">
-            <option value="credito">Crédito</option>
-            <option value="debito">Débito</option>
-          </select>
-          <input type="number" class="form-control" id="Pagonocartao" value="0" readonly>
-        </div>
+        <label for="PagonocartaoCredito" class="form-label">Pago no Cartão de Crédito</label>
+        <input type="number" class="form-control" id="PagonocartaoCredito" value="300" readonly>
       </div>
-
+      <div class="mb-3">
+        <label for="PagonocartaoDebito" class="form-label">Pago no Cartão de Débito</label>
+        <input type="number" class="form-control" id="PagonocartaoDebito" value="200" readonly>
+      </div>
       <div class="mb-3">
         <label for="Pagonopix" class="form-label">Pago no Pix</label>
-        <input type="number" class="form-control" id="Pagonopix" value="0" readonly>
+        <input type="number" class="form-control" id="Pagonopix" value="100" readonly>
       </div>
-
       <div class="mb-3">
         <label for="totalVendas" class="form-label">Total de Vendas</label>
-        <input type="number" class="form-control" id="totalVendas" value="0" readonly>
+        <input type="number" class="form-control" id="totalVendas" value="750" readonly>
       </div>
-
       <div class="mb-3">
         <label for="diferenca" class="form-label">Diferença</label>
-        <input type="number" class="form-control" id="diferenca" value="0" readonly>
+        <input type="number" class="form-control" id="diferenca" value="1" readonly>
       </div>
-
       <div class="mb-3">
         <label for="saldoFinal" class="form-label">Saldo Final</label>
-        <input type="text" class="form-control" id="saldoFinal" value="0">
+        <input type="text" class="form-control" id="saldoFinal" value="750">
       </div>
-
-
       <div class="d-flex justify-content-between">
         <button type="button" class="btn btn-primary">Calcular</button>
         <button type="button" class="btn btn-primary">Fechar Caixa</button>
