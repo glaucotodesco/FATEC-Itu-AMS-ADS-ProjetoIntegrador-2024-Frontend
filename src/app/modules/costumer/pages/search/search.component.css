@@ -43,13 +43,12 @@ button {
   transition: opacity 0.3s ease;
 }
 
-.card-body:hover::after {
-  opacity: 1; 
-}
-
 .card-body p {
-  position: relative; 
-  z-index: 1; 
-  color: white; 
+  position: relative;
+  z-index: 1;
+  color: white;
 }
 
+.card-body.selected::after  {
+  opacity: 1;
+}
