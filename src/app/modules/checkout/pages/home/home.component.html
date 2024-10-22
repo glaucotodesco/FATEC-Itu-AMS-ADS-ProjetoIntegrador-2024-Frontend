@@ -63,8 +63,9 @@
           </tr>
         </tbody>
       </table>
-      <div class="d-flex justify-content-center">
-        <ul class="pagination pagination-sm">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <input type="text" class="form-control form-control-sm" placeholder="Pesquisar..." />
+        <ul class="pagination pagination-sm mb-0">
           <li class="page-item active" aria-current="page">
             <span class="page-link">1</span>
           </li>
@@ -78,7 +79,7 @@
           <tr>
             <th>Comanda</th>
             <th>Total</th>
-            <th>Fechamento</th>
+            <th>Horário</th>
             <th>Tipo</th>
           </tr>
         </thead>
@@ -109,8 +110,9 @@
           </tr>
         </tbody>
       </table>
-      <div class="d-flex justify-content-center">
-        <ul class="pagination pagination-sm">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <input type="text" class="form-control form-control-sm" placeholder="Pesquisar..." />
+        <ul class="pagination pagination-sm mb-0">
           <li class="page-item active" aria-current="page">
             <span class="page-link">1</span>
           </li>
@@ -134,6 +136,14 @@
       </button>
     </div>
   </div>
+  
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-5 d-flex justify-content-center">
+      <button class="btn btn-primary btn-sm" (click)="openModal(modalSelect)">
+        Consultar Comanda
+      </button>
+    </div>
+  </div>
 
   <app-modal #modalOrder [title]="'Editar Registro'">
     <app-order-register></app-order-register>
@@ -145,5 +155,9 @@
 
   <app-modal #modalCash [title]="'Adicionar Dinheiro'">
     <app-add-cash></app-add-cash>
+  </app-modal>
+  
+  <app-modal #modalSelect [title]="'Consultar Comanda'">
+    <app-select-order></app-select-order>
   </app-modal>
 </div>

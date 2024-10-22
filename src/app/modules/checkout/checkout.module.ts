@@ -9,6 +9,7 @@ import { OrderRegisterComponent } from './components/order-register/order-regist
 import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { AddCashComponent } from './components/add-cash/add-cash.component';
 import { FormsModule } from '@angular/forms';
+import { SelectOrderComponent } from './components/select-order/select-order.component';
 
 
 
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     OrdersSlipComponent,
     OrderRegisterComponent,
     CreateOrderComponent,
-    AddCashComponent
+    AddCashComponent,
+    SelectOrderComponent
   ],
   imports: [
     CommonModule,

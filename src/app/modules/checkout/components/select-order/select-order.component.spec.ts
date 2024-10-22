@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TabsComponent } from './tabs.component';
+import { SelectOrderComponent } from './select-order.component';
 
-describe('TabsComponent', () => {
-  let component: TabsComponent;
-  let fixture: ComponentFixture<TabsComponent>;
+describe('SelectOrderComponent', () => {
+  let component: SelectOrderComponent;
+  let fixture: ComponentFixture<SelectOrderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TabsComponent]
+      declarations: [SelectOrderComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(TabsComponent);
+    fixture = TestBed.createComponent(SelectOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
