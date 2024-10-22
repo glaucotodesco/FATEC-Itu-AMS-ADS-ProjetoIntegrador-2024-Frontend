@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
 export class OrderAddonsComponent {
   prods = [
-    { id: 1, name: "Pimenta Biquinho", price: 5.98 },
-    { id: 2, name: "Parmesão Ralado", price: 6.59 },
-    { id: 3, name: "Carne Extra", price: 10.99 },
-    { id: 4, name: "Molho Extra", price: 3.25 },
+    { id: 1, name: "Cebola", price: 0, status: true },
+    { id: 2, name: "Tomate", price: 0, status: true },
+    { id: 3, name: "Cheddar", price: 6.59, status: false },
+    { id: 4, name: "Hambúrguer Extra", price: 10.99, status: false },
+    { id: 5, name: "Molho Extra", price: 4.25, status: false },
   ]
 }
