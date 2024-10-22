@@ -1,0 +1,16 @@
+<div class="card p-3 my-3 rounded-3 shadow-sm" *ngFor="let i of prods">
+    <div class="row d-flex align-items-center">
+        <div class="col-7 me-auto">
+            <label class="fs-5">{{ i.name }}</label>
+            <br>
+            <label class="fs-6">+ R$ {{ i.price }}</label>
+        </div>
+        <div class="col-5 display-6 text-end">
+            <input class="form-check-input" type="checkbox" [checked]="i.status">
+        </div>
+    </div>
+</div>
+<div class="my-3">
+    <label class="ms-2 fs-5">Observações:</label>
+    <textarea class="form-control shadow-sm" style="height: 100px" placeholder="Ex: Remover Molho, etc"></textarea>
+</div>
