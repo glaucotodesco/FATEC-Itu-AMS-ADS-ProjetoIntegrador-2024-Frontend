@@ -1,0 +1,17 @@
+<div class="card mb-3" *ngFor="let item of categories">
+  <div class="row align-items-center justify-content-center p-1 ps-3">
+    <div class="col-4">
+      <img src="{{ item.image }}" class="img-fluid rounded" alt="item image">
+    </div>
+    <div class="col-8">
+      <div class="card-body align-items-center">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <div class="d-flex row align-items-center">
+          <div class="col-6">
+            <p class="card-text fw-bold">{{ item.price }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
