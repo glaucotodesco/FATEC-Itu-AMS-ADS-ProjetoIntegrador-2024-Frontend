@@ -7,10 +7,10 @@
   background-color: #d9d9d9;
   color: black;
 }
-.bg-grill {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.card-bodyy{
   background-color: #d9d9d9;
-  color: black;
+  border-radius: 10px; 
+}
+.title{
+  font-family: 'Times New Roman', Times, serif;
 }
