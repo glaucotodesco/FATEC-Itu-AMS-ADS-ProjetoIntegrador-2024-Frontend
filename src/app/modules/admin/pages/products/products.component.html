@@ -1,7 +1,7 @@
 <section class="container mb-5">
   <h1 class="display-6">Produtos</h1>
   <div class="d-flex justify-content-end sticky-top bg-white py-2">
-    <button type="button" class="btn btn-primary me-3">Novo</button>
+    <button type="button" class="btn btn-primary me-3" (click)="openModal(modalForm, {fullscreen: true})">Novo</button>
     <button type="button" class="btn btn-primary me-3">Importar</button>
   </div>
   <div class="row">
@@ -24,9 +24,17 @@
       </div>
     </div>
     <div class="col-10">
-      <app-category-table [category]="exampleInfo[0]"></app-category-table>
-      <app-category-table [category]="exampleInfo[1]"></app-category-table>
-      <app-category-table [category]="exampleInfo[2]"></app-category-table>
+      <app-category-table [category]="exampleInfo[0]" (editEmitter)="openModal(modalForm, {fullscreen: true})" (removeEmitter)="openModal(modalDelete)"></app-category-table>
+      <app-category-table [category]="exampleInfo[1]" (editEmitter)="openModal(modalForm, {fullscreen: true})" (removeEmitter)="openModal(modalDelete)"></app-category-table>
+      <app-category-table [category]="exampleInfo[2]" (editEmitter)="openModal(modalForm, {fullscreen: true})" (removeEmitter)="openModal(modalDelete)"></app-category-table>
     </div>
   </div>
 </section>
+
+<app-modal #modalForm [title]="'Criar produto'">
+  <app-product></app-product>
+</app-modal>
+
+<app-modal #modalDelete [title]="'Deletar Produto'">
+  <p>Tem certeza que deseja deletar esse produto</p>
+</app-modal>
