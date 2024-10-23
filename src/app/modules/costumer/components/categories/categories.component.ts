@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-categories',
@@ -6,20 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent {
-  items = [
-    { label: 'Entradas', imageUrl: 'assets/costumer/search/entradas.jpg' },
-    { label: 'Prato Principal', imageUrl: 'assets/costumer/search/prato_principal.jpg' },
-    { label: 'Bebidas', imageUrl: 'assets/costumer/search/bebidas.jpg' },
-    { label: 'Porções', imageUrl: 'assets/costumer/search/porcoes.jpg' },
-    { label: 'Sobremesa', imageUrl: 'assets/costumer/search/sobremesa.jpg' }
-  ];  
+  @Input() selectedCategory: string | null = null;
+
   categories = [
     {
       name: 'Entradas',
       products: [
         { name: 'Brusqueta de Carne', price: 9.99, image: 'https://imgs.search.brave.com/eefgdcxCsMnuctAxODrACcPfnbQpm56DoMME78bF0Uo/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vY2VudHJh/bGJsb2dzLmNvbS5i/ci93cC1jb250ZW50/L3VwbG9hZHMvMjAy/MS8xMi9icnVzY2hl/dHRhLWl0YWxpYW5h/LmpwZz9yZXNpemU9/ODAwLDUzMCZzc2w9/MQ' },
-        { name: 'Salada Caesar', price: 12.99, image: 'https://imgs.search.brave.com/6F11_jtBG7UXmmp4DOPpUAWIo2Ud48qV9M8ZZpzCk3E/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y29jaW5oYW5hcy5j/b20vcHJvZHV0b3Jz/L3NhbGFkYV9jZWNh/c3RzL2NhYWNpdGVy/ZWJmYmlsYXRhb25h/dmlkYXBlY28uanBn' },
-        { name: 'Coxinha', price: 6.99, image: 'https://imgs.search.brave.com/O9HwYEnFYkAoGl8qOwKo7b6-pGhYk9DawND8ZqIgI7Q/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cudmVnZXRpbmEubmV0L2ltYWdlcy9yZWxhdGl2ZS1saXN0aW5nL2NveGluYWhhaWxlX2ZpbGVzL3h4eHh4eHh4eHh4L3BhZ2UvY292ZXJfb3ZlcmxpbmUuanBn' }
+        { name: 'Salada Caesar', price: 12.99, image: 'https://static.itdg.com.br/images/640-400/3f0787cb6db2f0db10269fc45bd8abee/shutterstock-1078415420.jpg' },
+        { name: 'Coxinha', price: 6.99, image: 'https://receitasdeaz.com.br/wp-content/uploads/2024/06/coxinhas-de-frango.webp' }
       ]
     },
     {
@@ -33,27 +28,32 @@ export class CategoriesComponent {
     {
       name: 'Bebidas',
       products: [
-        { name: 'Refrigerante', price: 5.00, image: 'https://imgs.search.brave.com/MiPAXHtmjR4Kl6z8MPZVbqWcMNHJ6OYPZqqc9yD88Yw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9ibG9nZ3Zlcml6YS5jb20vZGVtby9pbWcvcmVmcmVnZXJhbmdlL2ZvcmlsYXMvcGFnZXMvdHJhZG8vcmVmcmVnYW50ZS5qcGc' },
-        { name: 'Cerveja', price: 8.50, image: 'https://imgs.search.brave.com/jm8U0o2Q_8Zfhp0aAKTZ_z_-L4gdQWZQpCX3Jx9h8SY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cudmVyaW1hLmNvbS9pbWcvY2VydC9wYWdlcy9wYWdlcy9vdmVydmxpbmUvcGFnZXMvaW5ncmF0ZWFyLmpwZz9yZXNpemU9ODAwJHNpbj1kZWNpc2lvbg' },
-        { name: 'Suco Natural', price: 4.50, image: 'https://imgs.search.brave.com/mGHXoaBHDcF7o9OrQlmxt-_ItkPAIv6o7UM2EvZJ7N4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cuY29wbGV0aW5jYXRvcnMuY29tLmJyL2ltYWdlcy9zdWNvLXNhbGFkZS5qcGc' }
+        { name: 'Refrigerante', price: 5.00, image: 'https://img.freepik.com/fotos-premium/ai-image-generator-a-coca-cola-e-um-refrigerante-carbonatado-vendido-nas-lojas_977285-9096.jpg?w=740' },
+        { name: 'Cerveja', price: 8.50, image: 'https://cdn.shopify.com/s/files/1/0054/6682/files/how_to_make_beer_480x480.jpg?v=1682910325' },
+        { name: 'Suco Natural', price: 4.50, image: 'https://cantinagoodlanche.com.br/wp-content/uploads/2020/07/beneficios-dos-sucos-naturais-1-alfa-hotel.jpg ' }
       ]
     },
     {
       name: 'Porções',
       products: [
-        { name: 'Batata Frita', price: 15.00, image: 'https://imgs.search.brave.com/PG7h63f0APyNeZtKtCv-QL4FhV2gw96dPj8VrvgwOMY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cudmVyaW1hLmNvbS9pbWcvY2VydC9wYWdlcy9wYWdlcy9vdmVydmxpbmUvcGFnZXMvbGFuZC8xMS9iYXRhdGEmY3Rvb2xvdXQ9MDIwJHNpbj1hbHRv' },
-        { name: 'Iscas de Frango', price: 18.00, image: 'https://imgs.search.brave.com/f9gFNhD2dH99QY4wn0yDjFIMmD-4ynqTPzD6k7pP1u8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cucGFudG9yZWRvLmNvbS9pbWcvY2VydC9wYWdlcy9wYWdlcy9vdmVydmxpbmUvcGFnZXMvbGFuZC8yMS9pbWcvcHVibGluZ3UvbWFudGVyZWFyLmZpbGUuanBn' },
-        { name: 'Linguiça Acebolada', price: 20.00, image: 'https://imgs.search.brave.com/gpAe4AqjzyeS7-hMR6iGHX6hAr8UhbDiK59BXpSc_T4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cucGxhc3RlY2hlbC5jb20vbGFuZC9pbWcvbGFuZC1naWJlL2luZ3JhdGlvbi9saW5ndWljYS1hY2Vib2xhZC5qcGc' }
+        { name: 'Batata Frita', price: 15.00, image: 'https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRFiWUbLK4cmvufUljGHhn1ifqaOkZZzebdCUE347QUG092UcSatzeChPwpBPY-RLQW' },
+        { name: 'Iscas de Frango', price: 18.00, image: 'https://anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-2847-f58205be67bef7c46637384f4627de28.JPG' },
+        { name: 'Linguiça Acebolada', price: 20.00, image: 'https://static.itdg.com.br/images/640-400/70acb497226f5a39eafd73cab3d15509/343137-original.jpg' }
       ]
     },
     {
       name: 'Sobremesas',
       products: [
-        { name: 'Pudim', price: 8.99, image: 'https://imgs.search.brave.com/vgM-2Zh1bRIb26Ar3uf4TzP0hLhf8Ju8T_w9oH1WxFs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9yZWxhdGl2ZS5wb3R0YW1tLmNvbS5ici93cC9jb250ZW50/L2ltYWdlcy9wYWRkYW0vcHVkaW0uanBn' },
-        { name: 'Torta de Limão', price: 10.99, image: 'https://imgs.search.brave.com/ZrLfD2qUhzpL3PtCRuNTMwka89xCQ_DiVhvRCnt5l20/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cudmFudGhlcml1bS5jb20vY291cG9udG9uY2VydC90b3J0YS1kZV9saW1hb24uanBn' },
-        { name: 'Brownie', price: 9.99, image: 'https://imgs.search.brave.com/o8K4UauKp9cKIS4whMY95JXwvcLX54WlHYuMXU6vWDo/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcudW5pdG9wZW1lbnRhbHNoYWxpdGVzLmNvbS9pbWcvYnJvd25pZS5qcGc' }
+        { name: 'Pudim', price: 8.99, image: 'https://static.itdg.com.br/images/640-400/3727a5e9857b50aa40fad2ebeeb7724f/63328-263980-original.jpg' },
+        { name: 'Torta de Limão', price: 10.99, image: 'https://static.itdg.com.br/images/640-400/634823f4b89083718f7457a7d17cbeaf/319681-original.jpg' },
+        { name: 'Brownie', price: 9.99, image: 'https://static.itdg.com.br/images/640-420/5d139b703a9df7604abf863a3bd76aa6/252863-shutterstock-1938293728.jpg' }
       ]
     }
   ];
+
+  getProductsForSelectedCategory() {
+    const category = this.categories.find(cat => cat.name === this.selectedCategory);
+    return category ? category.products : [];
+  }
 
 }
