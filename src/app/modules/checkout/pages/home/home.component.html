@@ -1,162 +1,74 @@
-<div class="container">
-  <div class="row mb-4">
-    <div class="col text-center">
-      <h4>Caixa: 1</h4>
-      <h5>Nome: (Exemplo)</h5>
-    </div>
-  </div>
+<div class="container mt-4">
+  <h4 class="text-center mb-3">Comandas</h4>
+  <table class="table table-bordered table-hover table-sm">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Valor Total</th>
+        <th>Data</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.client }}</td>
+        <td>{{ ticket.totalValue | currency:'BRL' }}</td>
+        <td>{{ ticket.dateCreate | date:'short' }}</td>
+        <td>
+          <span class="badge bg-success" *ngIf="ticket.status === 'concluída'">Concluída</span>
+          <span class="badge bg-warning text-dark" *ngIf="ticket.status === 'pendente'">Pendente</span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-info" (click)="viewOrderDetails(ticket)">Ver Detalhes</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="row justify-content-center">
-    <!-- Coluna com as tabelas de comandas -->
-    <div class="col-md-7">
-      <!-- Tabela de Comandas Abertas -->
-      <div class="border p-3 rounded shadow mb-3">
-        <h5 class="text-center mb-2">Comandas em Aberto</h5>
-        <div class="d-flex justify-content-between mb-2">
-          <input type="text" class="form-control form-control-sm me-2" placeholder="Pesquisar Comandas Abertas..." [(ngModel)]="searchQueryOpen" (ngModelChange)="filterOpenOrders()" />
-          <select class="form-select form-select-sm w-auto" [(ngModel)]="selectedTypeOpen" (ngModelChange)="filterOpenOrders()">
-            <option value="Todos">Todos</option>
-            <option value="Mesa">Mesa</option>
-            <option value="Balcão">Balcão</option>
-          </select>
+  <!-- Modal de Detalhes -->
+  <div class="modal fade show d-block" *ngIf="selectedTicket" tabindex="-1" style="background: rgba(0,0,0,0.5)">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalhes da Comanda #{{ selectedTicket.id }}</h5>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
         </div>
+        <div class="modal-body">
+          <p><strong>Cliente:</strong> {{ selectedTicket.client }}</p>
+          <p><strong>Valor Total:</strong> {{ selectedTicket.totalValue | currency:'BRL' }}</p>
+          <p><strong>Data:</strong> {{ selectedTicket.dateCreate | date:'short' }}</p>
+          <p><strong>Status:</strong> 
+            <span class="badge" [ngClass]="{
+              'bg-success': selectedTicket.status === 'concluída',
+              'bg-warning text-dark': selectedTicket.status === 'pendente'
+            }">{{ selectedTicket.status }}</span>
+          </p>
 
-        <table class="table table-striped table-borderless table-sm">
-          <thead class="table-secondary">
-            <tr>
-              <th>Comanda</th>
-              <th>Total</th>
-              <th>Horário</th>
-              <th>Tipo</th>
-              <th>Status</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let order of getCurrentOpenOrders()">
-              <td>{{ order.id }}</td>
-              <td>{{ order.total }}</td>
-              <td>{{ order.time }}</td>
-              <td>
-                <span class="badge bg-primary" *ngIf="order.type === 'Mesa'">{{ 'Mesa ' + order.tableNumber }}</span>
-                <span class="badge bg-success" *ngIf="order.type === 'Balcão'">Balcão</span>
-              </td>
-              <td>
-                <span class="badge bg-warning text-dark" *ngIf="order.status === 'Aguardando Pagamento'">Aguardando Pagamento</span>
-                <span class="badge bg-success" *ngIf="order.status === 'Fechado'">Fechado</span>
-              </td>
-              <td>
-                <button class="btn btn-secondary btn-sm me-1" (click)="openModal(modalOrder)">
-                  <i class="bi bi-pencil"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <ul class="pagination pagination-sm mb-0">
-            <li class="page-item" [class.disabled]="currentPageOpen === 1">
-              <a class="page-link" (click)="prevPageOpen()">Anterior</a>
-            </li>
-            <li class="page-item active" aria-current="page">
-              <span class="page-link">{{ currentPageOpen }}</span>
-            </li>
-            <li class="page-item" [class.disabled]="currentPageOpen === totalPagesOpen">
-              <a class="page-link" (click)="nextPageOpen()">Próximo</a>
-            </li>
-          </ul>
+          <table class="table table-sm mt-3">
+            <thead>
+              <tr>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of selectedTicket.ticketItems">
+                <td>{{ item.description }}</td>
+                <td>{{ item.price | currency:'BRL' }}</td>
+                <td>{{ item.quantity }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-
-      <!-- Tabela de Comandas Fechadas -->
-      <div class="border p-3 rounded shadow">
-        <h5 class="text-center mb-2">Comandas Fechadas</h5>
-        <div class="d-flex justify-content-between mb-2">
-          <input type="text" class="form-control form-control-sm me-2" placeholder="Pesquisar Comandas Fechadas..." [(ngModel)]="searchQueryClosed" (ngModelChange)="filterClosedOrders()" />
-          <select class="form-select form-select-sm w-auto" [(ngModel)]="selectedTypeClosed" (ngModelChange)="filterClosedOrders()">
-            <option value="Todos">Todos</option>
-            <option value="Mesa">Mesa</option>
-            <option value="Balcão">Balcão</option>
-          </select>
+        <div class="modal-footer">
+          <button class="btn btn-success" (click)="toggleStatus()">Alterar Status</button>
+          <button class="btn btn-secondary" (click)="closeModal()">Fechar</button>
         </div>
-
-        <table class="table table-striped table-borderless table-sm">
-          <thead class="table-secondary">
-            <tr>
-              <th>Comanda</th>
-              <th>Total</th>
-              <th>Horário</th>
-              <th>Tipo</th>
-              <th>Status</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let order of getCurrentClosedOrders()">
-              <td>{{ order.id }}</td>
-              <td>{{ order.total }}</td>
-              <td>{{ order.time }}</td>
-              <td>
-                <span class="badge bg-primary" *ngIf="order.type === 'Mesa'">{{ 'Mesa ' + order.tableNumber }}</span>
-                <span class="badge bg-success" *ngIf="order.type === 'Balcão'">Balcão</span>
-              </td>
-              <td>
-                <span class="badge bg-warning text-dark" *ngIf="order.status === 'Aguardando Pagamento'">Aguardando Pagamento</span>
-                <span class="badge bg-success" *ngIf="order.status === 'Fechado'">Fechado</span>
-              </td>
-              <td>
-                <button class="btn btn-secondary btn-sm me-1" (click)="openModal(modalOrder)">
-                  <i class="bi bi-eye"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <ul class="pagination pagination-sm mb-0">
-            <li class="page-item" [class.disabled]="currentPageClosed === 1">
-              <a class="page-link" (click)="prevPageClosed()">Anterior</a>
-            </li>
-            <li class="page-item active" aria-current="page">
-              <span class="page-link">{{ currentPageClosed }}</span>
-            </li>
-            <li class="page-item" [class.disabled]="currentPageClosed === totalPagesClosed">
-              <a class="page-link" (click)="nextPageClosed()">Próximo</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Coluna de Registrar Pedido -->
-    <div class="col-md-4 ms-2">
-      <div class="border p-3 rounded shadow">
-        <h5 class="text-center mb-2">Registrar Pedido</h5>
-        <button class="btn btn-primary w-100 btn-sm mb-2" (click)="openModal(modalRegister)">
-          Adicionar Itens
-        </button>
       </div>
     </div>
   </div>
 </div>
-
-<div class="d-flex justify-content-center mt-3">
-  <button class="btn btn-primary btn-sm" (click)="openModal(modalCash)">
-    Adicionar Dinheiro ao Caixa
-  </button>
-</div>
-
-<!-- Modais -->
-<app-modal #modalOrder [title]="'Editar Registro'" [okTextButton]="'Editar Pedido'" [cancelTextButton]="'Voltar'" [okResult]="true">
-  <app-order-register></app-order-register>
-</app-modal>
-
-<app-modal #modalRegister [title]="'Registrar Pedido'" [okTextButton]="'Adicionar Pedido'" [cancelTextButton]="'Voltar'" [okResult]="true">
-  <app-create-order></app-create-order>
-</app-modal>
-
-<app-modal #modalCash [title]="'Adicionar Dinheiro'" [okTextButton]="'Adicionar'" [cancelTextButton]="'Voltar'" [okResult]="true">
-  <app-add-cash></app-add-cash>
-</app-modal>

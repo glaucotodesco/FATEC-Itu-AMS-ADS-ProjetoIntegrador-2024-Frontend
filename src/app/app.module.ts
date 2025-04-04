@@ -11,6 +11,8 @@ import localePt from '@angular/common/locales/pt';
 import { PrototypeComponent } from './prototype/prototype.component';
 import { AdminModule } from './modules/admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -29,7 +31,8 @@ registerLocaleData(localePt, 'pt');
     NgbModule,
     SharedModule,
     AdminModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
    ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt'}

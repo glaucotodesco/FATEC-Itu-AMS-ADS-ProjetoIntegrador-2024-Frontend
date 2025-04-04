@@ -1,144 +1,125 @@
-<div class="container mt-4">
-  <div class="row">
-    <!-- Coluna da Comanda -->
-    <div class="col-md-6">
-      <!-- Comanda -->
-      <div class="mb-3">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2 class="comanda-title" style="font-size: 1.2rem;">Comanda 1</h2>
-        </div>
-        <div class="form-group">
-          <label for="comanda1">Número da Comanda:</label>
-          <input type="number" class="form-control form-control-sm" id="comanda1" name="comanda1" value="1" readonly>
-        </div>
+<div class="container mt-3">
 
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>Produto</th>
-              <th>Qtd</th>
-              <th>V. Uni</th>
-              <th>Adic.</th>
-              <th>Valor</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of orderItems1; let i = index">
-              <td>{{ item.name }}</td>
-              <td>
-                <ng-container *ngIf="!item.editingQuantity; else editQuantityInput">
-                  <!-- Exibe a quantidade original e o histórico -->
-                  <span>{{ item.quantity }}</span>
-                  <span *ngIf="item.previousQuantity" class="text-muted ms-2">(Histórico: {{ item.previousQuantity }})</span>
-                  <button class="btn btn-outline-secondary btn-sm ms-2" (click)="toggleEditQuantity(item)">
-                    <i class="bi bi-pencil"></i>
-                  </button>
-                </ng-container>
-                <ng-template #editQuantityInput>
-                  <!-- Exibe o campo de edição com a nova quantidade -->
-                  <div class="d-flex align-items-center">
-                    <span class="text-muted me-2">Histórico: {{ item.previousQuantity }}</span> <!-- Exibe a quantidade antiga -->
-                    <input 
-                      type="number" 
-                      class="form-control form-control-sm d-inline-block w-50 me-2" 
-                      [(ngModel)]="item.newQuantity">
-                    <button class="btn btn-success btn-sm ms-2" (click)="saveNewQuantity(item)">Salvar</button>
-                    <button class="btn btn-secondary btn-sm ms-1" (click)="cancelEditQuantity(item)">Cancelar</button>
-                  </div>
-                </ng-template>
-              </td>
-              <td>R$ {{ item.unitPrice.toFixed(2) }}</td>
-              <td>R$ {{ item.additional.toFixed(2) }}</td>
-              <td>R$ {{ (item.unitPrice + item.additional) * item.quantity | number: '1.2-2' }}</td>
-              <td>
-                <ng-container *ngIf="!item.removed; else removedMessage">
-                  <div class="input-group">
-                    <input type="text" class="form-control form-control-sm mb-1" placeholder="Razão da remoção" [(ngModel)]="item.removalReason">
-                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="markAsRemoved(item)">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </ng-container>
-                <ng-template #removedMessage>
-                  <span class="text-danger">Item excluído</span>
-                </ng-template>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="4" class="text-end"><strong>Total:</strong></td>
-              <td>R$ {{ calculateTotal(orderItems1) | number: '1.2-2' }}</td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
+  <div *ngFor="let comanda of comandas; let i = index" class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <strong>Comanda #{{ comanda.id }}</strong>
+      <div>
+        <button class="btn btn-sm btn-outline-primary me-2" (click)="toggleEditQuantity(comanda)" *ngIf="!comanda.editando">
+          Editar Quantidades
+        </button>
+        <button class="btn btn-sm btn-success me-2" (click)="saveNewQuantity(comanda)" *ngIf="comanda.editando">
+          Salvar
+        </button>
+        <button class="btn btn-sm btn-secondary" (click)="cancelEditQuantity(comanda)" *ngIf="comanda.editando">
+          Cancelar
+        </button>
       </div>
     </div>
 
-    <!-- Coluna de Ações -->
-    <div class="col-md-6">
-      <!-- Adicionar Comanda -->
-      <div class="form-group mb-3">
-        <label for="add-comanda">Adicionar Comanda:</label>
-        <div class="input-group">
-          <input type="number" class="form-control form-control-sm" id="add-comanda" name="add-comanda" placeholder="Número da comanda" [(ngModel)]="newComandaNumber">
-          <button class="btn btn-success btn-sm" type="button" (click)="addComanda(newComandaNumber)">Adicionar</button>
-        </div>
-      </div>
+    <div class="card-body p-2">
+      <table class="table table-sm mb-0">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="text-end">Preço</th>
+            <th class="text-center">Qtd</th>
+            <th class="text-end">Subtotal</th>
+            <th class="text-end">Valor Original</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of comanda.itens" [class.table-secondary]="item.removido">
+            <td>{{ item.nome }}</td>
+            <td class="text-end">R$ {{ item.preco.toFixed(2) }}</td>
+            <td class="text-center">
+              <ng-container *ngIf="comanda.editando">
+                <input type="number" class="form-control form-control-sm text-center" [(ngModel)]="item.quantidade" min="1" style="width: 60px;">
+              </ng-container>
+              <ng-container *ngIf="!comanda.editando">
+                {{ item.quantidade }}
+              </ng-container>
+            </td>
+            <td class="text-end">
+              R$ {{ (item.preco * item.quantidade).toFixed(2) }}
+            </td>
+            <td class="text-end">
+              <span *ngIf="item.valorOriginal">R$ {{ item.valorOriginal.toFixed(2) }}</span>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-outline-danger" (click)="markAsRemoved(item)">
+                <i class="bi bi-x"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" class="text-end"><strong>Total da Comanda:</strong></td>
+            <td class="text-end" colspan="3">R$ {{ calculateComandaTotal(comanda).toFixed(2) }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
 
-      <!-- Escanear Produto -->
-      <div class="form-group mb-3">
-        <label for="scan-code">Escanear pelo Código de Barras:</label>
-        <div class="input-group">
-          <input type="text" class="form-control form-control-sm" id="scan-code" name="scan-code" placeholder="Ex: 0000" [(ngModel)]="scannedCode" autofocus>
-          <button class="btn btn-success btn-sm" type="button" (click)="scanProduct(scannedCode)">Escanear</button>
-        </div>
-      </div>
+    <div class="card-footer p-2 text-end">
+      <button class="btn btn-sm btn-outline-danger" (click)="removeComanda(i)">Remover Comanda</button>
+    </div>
+  </div>
 
-      <!-- Forma de Pagamento -->
-      <div class="form-group mb-3">
-        <label for="payment">Forma de Pagamento:</label>
-        <select class="form-select form-select-sm" id="payment" name="payment" [(ngModel)]="selectedPaymentMethod" (change)="onPaymentMethodChange()">
+  <div class="text-end mb-2">
+    <button class="btn btn-outline-success" (click)="addComanda()">Adicionar Nova Comanda</button>
+  </div>
+
+  <div class="card p-3">
+    <h5>Total Geral: R$ {{ getTotalGeral().toFixed(2) }}</h5>
+    <h5>Total com 10% (Serviço): R$ {{ getTotalComGorjeta().toFixed(2) }}</h5>
+
+    <div class="form-group mb-3">
+      <label for="payment">Forma de Pagamento:</label>
+      <select class="form-select form-select-sm" id="payment" [(ngModel)]="selectedPaymentMethod" (change)="onPaymentMethodChange()">
+        <option value="credit">Crédito</option>
+        <option value="debit">Débito</option>
+        <option value="pix">PIX</option>
+        <option value="dinheiro">Dinheiro</option>
+        <option value="split">Dividir Pagamento</option>
+      </select>
+    </div>
+
+    <!-- Pagamento Dividido -->
+    <div *ngIf="selectedPaymentMethod === 'split'" class="form-group mb-3">
+      <label>Dividir Pagamento:</label>
+      <div *ngFor="let payment of splitPayments; let i = index" class="d-flex mb-2">
+        <select class="form-select form-select-sm" [(ngModel)]="payment.method">
           <option value="credit">Crédito</option>
           <option value="debit">Débito</option>
           <option value="pix">PIX</option>
           <option value="dinheiro">Dinheiro</option>
-          <option value="split">Dividir Pagamento</option> <!-- Nova opção para dividir -->
         </select>
+        <input type="number" class="form-control form-control-sm ms-2"
+               [(ngModel)]="payment.amount" min="0" [max]="totalAmount" placeholder="Valor">
+        <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeSplit(i)">Remover</button>
       </div>
+      <button type="button" class="btn btn-info btn-sm" (click)="addSplitPayment()">Adicionar Pagamento</button>
 
-      <!-- Divisão do Pagamento -->
-      <div *ngIf="selectedPaymentMethod === 'split'" class="form-group mb-3">
-        <label for="splitPayment">Dividir Pagamento:</label>
-        <div *ngFor="let payment of splitPayments; let i = index" class="d-flex mb-2">
-          <select class="form-select form-select-sm" [(ngModel)]="payment.method" (change)="updateSplitAmount()">
-            <option value="credit">Crédito</option>
-            <option value="debit">Débito</option>
-            <option value="pix">PIX</option>
-            <option value="dinheiro">Dinheiro</option>
-          </select>
-          <input type="number" class="form-control form-control-sm ms-2" [(ngModel)]="payment.amount" (input)="updateSplitAmount()" min="0" [max]="totalAmount" placeholder="Valor">
-          <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeSplit(i)">Remover</button>
+      <div class="mt-2">
+        <strong>Total Informado:</strong> R$ {{ getTotalSplitAmount() | number: '1.2-2' }}
+        <div *ngIf="getSplitChange() > 0">
+          <strong>Troco:</strong> R$ {{ getSplitChange() | number: '1.2-2' }}
         </div>
-        <button type="button" class="btn btn-info btn-sm" (click)="addSplitPayment()">Adicionar Pagamento</button>
       </div>
-
-      <!-- Gorjeta -->
-      <div class="form-group mb-3">
-        <label for="fixed-tip">Gorjeta (15%):</label>
-        <p id="fixed-tip" style="font-size: 0.9rem;">Valor da gorjeta: R$ {{ calculateTip(totalAmount) | number: '1.2-2' }}</p>
-      </div>
-
-      <!-- Valor Total -->
-      <div class="form-group mb-3">
-        <label for="total-amount">Valor Total:</label>
-        <input type="text" class="form-control form-control-sm" id="total-amount" name="total-amount" [value]="calculateTotalAmount()" readonly>
-      </div>
-
-      <!-- Botão Finalizar -->
-      <button type="button" class="btn btn-primary btn-sm" (click)="finalizePayment()">Finalizar</button>
     </div>
+
+    <!-- Pagamento em Dinheiro -->
+    <div *ngIf="selectedPaymentMethod === 'dinheiro'" class="form-group mb-3">
+      <label for="valorPago">Valor pago em dinheiro:</label>
+      <input type="number" class="form-control form-control-sm" id="valorPago" [(ngModel)]="valorPagoEmDinheiro" min="0" placeholder="Digite o valor pago">
+      <div *ngIf="valorPagoEmDinheiro !== null && valorPagoEmDinheiro >= getTotalComGorjeta()" class="mt-2">
+        <strong>Troco:</strong> R$ {{ calcularTroco() | number: '1.2-2' }}
+      </div>
+    </div>
+
+    <button class="btn btn-primary mt-3 w-100" (click)="concluirPagamento()">Concluir Pagamento</button>
+    <button class="btn btn-outline-secondary mt-2 w-100" (click)="imprimirRecibo()">Imprimir Recibo</button>
   </div>
 </div>

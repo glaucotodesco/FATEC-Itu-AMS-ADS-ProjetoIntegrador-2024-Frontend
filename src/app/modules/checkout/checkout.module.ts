@@ -19,7 +19,7 @@ import { MainComponent } from './pages/main/main.component';
 import { RemoveTabsComponent } from './components/remove-tabs/remove-tabs.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { LoginComponent } from './pages/login/login.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,8 @@ import { LoginComponent } from './pages/login/login.component';
     CommonModule,
     RouterModule,
     NgbModule,
-    CheckoutRoutingModule
+    CheckoutRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class CheckoutModule { }

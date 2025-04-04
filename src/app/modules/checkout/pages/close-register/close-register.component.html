@@ -1,53 +1,67 @@
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
-  <div class="card p-4" style="width: 400px; max-width: 100%;">
-    <form>
-      <div class="mb-3">
-        <label for="Caixa" class="form-label">Caixa</label>
-        <input type="number" class="form-control" id="Caixa" value="1" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="DatadeAbertura" class="form-label">Data de Abertura</label>
-        <!-- Data de exemplo definida -->
-        <input type="date" class="form-control" id="DatadeAbertura" value="2024-12-03" required>
-      </div>
-      <div class="mb-3">
-        <label for="Pagonodinheiro" class="form-label">Pago no Dinheiro</label>
-        <input type="number" class="form-control" id="Pagonodinheiro" value="151" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="PagonocartaoCredito" class="form-label">Pago no Cartão de Crédito</label>
-        <input type="number" class="form-control" id="PagonocartaoCredito" value="300" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="PagonocartaoDebito" class="form-label">Pago no Cartão de Débito</label>
-        <input type="number" class="form-control" id="PagonocartaoDebito" value="200" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="Pagonopix" class="form-label">Pago no Pix</label>
-        <input type="number" class="form-control" id="Pagonopix" value="100" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="totalVendas" class="form-label">Total de Vendas</label>
-        <input type="number" class="form-control" id="totalVendas" value="750" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="diferenca" class="form-label">Diferença</label>
-        <input type="number" class="form-control" id="diferenca" value="1" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="saldoFinal" class="form-label">Saldo Final</label>
-        <input type="text" class="form-control" id="saldoFinal" value="750">
-      </div>
-      <div class="d-flex justify-content-center">
-        <button type="button" class="btn btn-primary btn-sm" (click)="openModal(modalSelect)">
-          Fechar Caixa
-        </button>
-      </div>
-    </form>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+    <h5 class="text-center mb-4">Fechamento do Caixa</h5>
+    
+    <div class="mb-2">
+      <strong>Caixa:</strong> {{ caixaId }}
+    </div>
+    <div class="mb-2">
+      <strong>Data:</strong> {{ dataAbertura }}
+    </div>
+    <div class="mb-3">
+      <strong>Hora:</strong> {{ horaAbertura }}
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label">Pago no Dinheiro</label>
+      <input type="number" class="form-control" [value]="pagoDinheiro" readonly>
+    </div>
+    <div class="mb-2">
+      <label class="form-label">Pago no Cartão de Crédito</label>
+      <input type="number" class="form-control" [value]="pagoCredito" readonly>
+    </div>
+    <div class="mb-2">
+      <label class="form-label">Pago no Cartão de Débito</label>
+      <input type="number" class="form-control" [value]="pagoDebito" readonly>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Pago no Pix</label>
+      <input type="number" class="form-control" [value]="pagoPix" readonly>
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label">Total de Vendas</label>
+      <input type="number" class="form-control" [value]="totalVendas" readonly>
+    </div>
+    <div class="mb-2">
+      <label class="form-label">Diferença</label>
+      <input type="number" class="form-control" [value]="diferenca" readonly>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Saldo Final</label>
+      <input type="number" class="form-control" [(ngModel)]="saldoFinal" name="saldoFinal">
+    </div>
+
+    <!-- Botão de confirmação -->
+    <div class="text-center">
+      <button class="btn btn-primary btn-sm" (click)="confirmarFechamento()">Fechar Caixa</button>
+    </div>
+
+    <!-- Confirmação -->
+    <div *ngIf="confirmacao" class="mt-4 text-center">
+      <p>Tem certeza que deseja fechar o caixa?</p>
+      <button class="btn btn-success btn-sm me-2" (click)="fecharCaixa()">Sim</button>
+      <button class="btn btn-danger btn-sm" (click)="cancelarFechamento()">Não</button>
+    </div>
+
+    <!-- Mensagem após fechamento -->
+    <div *ngIf="fechado" class="alert alert-success mt-4" role="alert">
+      ✅ Caixa fechado com sucesso!
+    </div>
+
+    <div *ngIf="logGerado || relatorioGerado" class="mt-3">
+      <p *ngIf="logGerado">📘 Log do dia gerado com sucesso.</p>
+      <p *ngIf="relatorioGerado">📊 Relatório do dia gerado com sucesso.</p>
+    </div>
   </div>
 </div>
-
-<!-- Modal de Confirmação -->
-<app-modal #modalSelect [title]="'Confirmar Fechamento'"[okTextButton]="'Sim'" [cancelTextButton]="'Não'" [okResult]="true">
-  <app-check-close-register></app-check-close-register>
-</app-modal>
