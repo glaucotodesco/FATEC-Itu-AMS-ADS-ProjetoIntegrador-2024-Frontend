@@ -1,6 +1,5 @@
 <div class="container mt-3">
-
-  <div *ngFor="let comanda of comandas; let i = index" class="card mb-3">
+  <div *ngFor="let comanda of comandasPaginas; let i = index" class="card mb-3">
     <div class="card-header d-flex justify-content-between align-items-center">
       <strong>Comanda #{{ comanda.id }}</strong>
       <div>
@@ -13,10 +12,12 @@
         <button class="btn btn-sm btn-secondary" (click)="cancelEditQuantity(comanda)" *ngIf="comanda.editando">
           Cancelar
         </button>
+        <button class="btn btn-sm btn-outline-info" (click)="comanda.showDetails = !comanda.showDetails">
+          <i class="bi" [ngClass]="comanda.showDetails ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+        </button>
       </div>
     </div>
-
-    <div class="card-body p-2">
+    <div class="card-body p-2" *ngIf="comanda.showDetails">
       <table class="table table-sm mb-0">
         <thead>
           <tr>
@@ -40,9 +41,7 @@
                 {{ item.quantidade }}
               </ng-container>
             </td>
-            <td class="text-end">
-              R$ {{ (item.preco * item.quantidade).toFixed(2) }}
-            </td>
+            <td class="text-end">R$ {{ (item.preco * item.quantidade).toFixed(2) }}</td>
             <td class="text-end">
               <span *ngIf="item.valorOriginal">R$ {{ item.valorOriginal.toFixed(2) }}</span>
             </td>
@@ -61,11 +60,25 @@
         </tfoot>
       </table>
     </div>
-
     <div class="card-footer p-2 text-end">
       <button class="btn btn-sm btn-outline-danger" (click)="removeComanda(i)">Remover Comanda</button>
     </div>
   </div>
+
+  <!-- Dynamic Pagination -->
+  <ul class="pagination mb-3">
+    <li class="page-item" [class.disabled]="paginaAtiva === 1">
+      <a class="page-link" (click)="mudarPagina(paginaAtiva - 1)" *ngIf="paginaAtiva > 1">Anterior</a>
+    </li>
+    <li class="page-item" *ngFor="let page of [].constructor(totalPages); let pageIndex = index">
+      <a class="page-link" (click)="mudarPagina(pageIndex + 1)" [class.active]="paginaAtiva === (pageIndex + 1)">
+        {{ pageIndex + 1 }}
+      </a>
+    </li>
+    <li class="page-item" [class.disabled]="paginaAtiva === totalPages">
+      <a class="page-link" (click)="mudarPagina(paginaAtiva + 1)" *ngIf="paginaAtiva < totalPages">Próximo</a>
+    </li>
+  </ul>
 
   <div class="text-end mb-2">
     <button class="btn btn-outline-success" (click)="addComanda()">Adicionar Nova Comanda</button>
@@ -74,7 +87,6 @@
   <div class="card p-3">
     <h5>Total Geral: R$ {{ getTotalGeral().toFixed(2) }}</h5>
     <h5>Total com 10% (Serviço): R$ {{ getTotalComGorjeta().toFixed(2) }}</h5>
-
     <div class="form-group mb-3">
       <label for="payment">Forma de Pagamento:</label>
       <select class="form-select form-select-sm" id="payment" [(ngModel)]="selectedPaymentMethod" (change)="onPaymentMethodChange()">
@@ -96,30 +108,10 @@
           <option value="pix">PIX</option>
           <option value="dinheiro">Dinheiro</option>
         </select>
-        <input type="number" class="form-control form-control-sm ms-2"
-               [(ngModel)]="payment.amount" min="0" [max]="totalAmount" placeholder="Valor">
+        <input type="number" class="form-control form-control-sm ms-2" [(ngModel)]="payment.amount" min="0" [max]="totalAmount" placeholder="Valor">
         <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removeSplit(i)">Remover</button>
       </div>
       <button type="button" class="btn btn-info btn-sm" (click)="addSplitPayment()">Adicionar Pagamento</button>
 
       <div class="mt-2">
-        <strong>Total Informado:</strong> R$ {{ getTotalSplitAmount() | number: '1.2-2' }}
-        <div *ngIf="getSplitChange() > 0">
-          <strong>Troco:</strong> R$ {{ getSplitChange() | number: '1.2-2' }}
-        </div>
-      </div>
-    </div>
-
-    <!-- Pagamento em Dinheiro -->
-    <div *ngIf="selectedPaymentMethod === 'dinheiro'" class="form-group mb-3">
-      <label for="valorPago">Valor pago em dinheiro:</label>
-      <input type="number" class="form-control form-control-sm" id="valorPago" [(ngModel)]="valorPagoEmDinheiro" min="0" placeholder="Digite o valor pago">
-      <div *ngIf="valorPagoEmDinheiro !== null && valorPagoEmDinheiro >= getTotalComGorjeta()" class="mt-2">
-        <strong>Troco:</strong> R$ {{ calcularTroco() | number: '1.2-2' }}
-      </div>
-    </div>
-
-    <button class="btn btn-primary mt-3 w-100" (click)="concluirPagamento()">Concluir Pagamento</button>
-    <button class="btn btn-outline-secondary mt-2 w-100" (click)="imprimirRecibo()">Imprimir Recibo</button>
-  </div>
-</div>
+        <strong>Total Informado:</strong> R$ {{ getTotalSplitAmount() | number: '1 ⬤

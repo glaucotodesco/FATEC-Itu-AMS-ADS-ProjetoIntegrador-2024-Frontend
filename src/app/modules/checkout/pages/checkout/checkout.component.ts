@@ -12,6 +12,7 @@ interface Comanda {
   id: number;
   itens: Item[];
   editando?: boolean;
+  showDetails?: boolean; // Added property to manage visibility of details
 }
 
 interface SplitPayment {
@@ -32,13 +33,52 @@ export class CheckoutComponent {
   valorPagoEmDinheiro: number | null = null;
   splitPayments: SplitPayment[] = [];
 
+  // Propriedades para paginação
+  paginaAtiva: number = 1;
+  itensPorPagina: number = 3; // Número de comandas por página
+
   constructor() {
     this.comandas.push({
       id: this.nextComandaId++,
       itens: [
         { nome: 'Pizza', preco: 120.00, quantidade: 1 },
         { nome: 'Duplo Cheddar', preco: 80.00, quantidade: 1 }
-      ]
+      ],
+      showDetails: false // Initialize showDetails
+    });
+    // Adicione mais comandas para testar a paginação
+    this.comandas.push({
+      id: this.nextComandaId++,
+      itens: [
+        { nome: 'Hambúrguer', preco: 50.00, quantidade: 2 },
+        { nome: 'Refrigerante', preco: 5.00, quantidade: 3 }
+      ],
+      showDetails: false // Initialize showDetails
+    });
+    this.comandas.push({
+      id: this.nextComandaId++,
+      itens: [
+        { nome: 'Salada', preco: 30.00, quantidade: 1 },
+        { nome: 'Suco Natural', preco: 7.00, quantidade: 2 }
+      ],
+      showDetails: false // Initialize showDetails
+    });
+    // Add more comandas as needed for testing
+    this.comandas.push({
+      id: this.nextComandaId++,
+      itens: [
+        { nome: 'Frango Grelhado', preco: 45.00, quantidade: 1 },
+        { nome: 'Cerveja', preco: 10.00, quantidade: 2 }
+      ],
+      showDetails: false // Initialize showDetails
+    });
+    this.comandas.push({
+      id: this.nextComandaId++,
+      itens: [
+        { nome: 'Batata Frita', preco: 15.00, quantidade: 1 },
+        { nome: 'Água', preco: 3.00, quantidade: 1 }
+      ],
+      showDetails: false // Initialize showDetails
     });
   }
 
@@ -46,8 +86,25 @@ export class CheckoutComponent {
     return this.getTotalComGorjeta();
   }
 
+  get totalComandas(): number {
+    return this.comandas.length;
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.totalComandas / this.itensPorPagina); // Calculate total pages
+  }
+
+  get comandasPaginas(): Comanda[] {
+    const inicio = (this.paginaAtiva - 1) * this.itensPorPagina;
+    return this.comandas.slice(inicio, inicio + this.itensPorPagina);
+  }
+
+  mudarPagina(pagina: number) {
+    this.paginaAtiva = pagina;
+  }
+
   addComanda() {
-    this.comandas.push({ id: this.nextComandaId++, itens: [] });
+    this.comandas.push({ id: this.nextComandaId++, itens: [], showDetails: false }); // Initialize showDetails
   }
 
   removeComanda(index: number) {
