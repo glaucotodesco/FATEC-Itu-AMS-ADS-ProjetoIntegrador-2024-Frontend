@@ -114,4 +114,23 @@
       <button type="button" class="btn btn-info btn-sm" (click)="addSplitPayment()">Adicionar Pagamento</button>
 
       <div class="mt-2">
-        <strong>Total Informado:</strong> R$ {{ getTotalSplitAmount() | number: '1 ⬤
+        <strong>Total Informado:</strong> R$ {{ getTotalSplitAmount() | number: '1.2-2' }}
+        <div *ngIf="getSplitChange() > 0">
+          <strong>Troco:</strong> R$ {{ getSplitChange() | number: '1.2-2' }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagamento em Dinheiro -->
+    <div *ngIf="selectedPaymentMethod === 'dinheiro'" class="form-group mb-3">
+      <label for="valorPago">Valor pago em dinheiro:</label>
+      <input type="number" class="form-control form-control-sm" id="valorPago" [(ngModel)]="valorPagoEmDinheiro" min="0" placeholder="Digite o valor pago">
+      <div *ngIf="valorPagoEmDinheiro !== null && valorPagoEmDinheiro >= getTotalComGorjeta()" class="mt-2">
+        <strong>Troco:</strong> R$ {{ calcularTroco() | number: '1.2-2' }}
+      </div>
+    </div>
+
+    <button class="btn btn-primary mt-3 w-100" (click)="concluirPagamento()">Concluir Pagamento</button>
+    <button class="btn btn-outline-secondary mt-2 w-100" (click)="imprimirRecibo()">Imprimir Recibo</button>
+  </div>
+</div>
